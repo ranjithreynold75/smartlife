@@ -28,7 +28,7 @@ var users={user:{
 }};
 io.on('connection',function(socket){
     console.log('A user connected  '+socket.id);
-    io.emit('message',{'id':socket.id});
+    socket.emit('message',{'id':socket.id});
 
 
 socket.on('disconnect',function(){
@@ -58,13 +58,24 @@ console.log(users);
     socket.on('message',function(data){
 
         console.log("A user message received"+socket.id+" "+data);
-
-        var to=data.to;
-        var from=data.from;
-        var message=data.message;
+var d=JSON.parse(data);
+        var to=d.to;
+        var from=d.from;
+        var message=d.message;
         console.log(data);
-        users.user['to'].emit("receive",{from:from,message:message});
 
+        console.log(users.user[from]);
+        if(users.user[to]) {
+            var s=users.user[to];
+            console.log(s);
+            io.to(s).emit("receive", {from: from, message: message});
+        }
+        else
+        {
+            //socket =users.user[from];
+            //s.emit("receive", {from: to, message: "not Online"});
+        socket.emit("receive",{from: to, message: "not Online"});
+        }
 
 
     })

@@ -84,6 +84,6 @@ var d=JSON.parse(data);
 
 
 
-var server=http.listen(8000,function(){
+var server=http.listen(process.env.PORT || 8000,function(){
     console.log("server running in port 8000");
 });

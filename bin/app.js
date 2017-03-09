@@ -59,14 +59,14 @@ console.log(users);
 
         console.log("A user message received"+socket.id+" "+data);
 var d=JSON.parse(data);
-        var to=d.to;
+        var to1=d.to;
         var from=d.from;
         var message=d.message;
         console.log(data);
 
         console.log(users.user[from]);
-        if(users.user[to]) {
-            var s=users.user[to];
+        if(users.user[to1]) {
+            var s=users.user[to1];
             console.log(s);
             io.to(s).emit("receive", {from: from, message: message});
         }
@@ -74,7 +74,7 @@ var d=JSON.parse(data);
         {
             //socket =users.user[from];
             //s.emit("receive", {from: to, message: "not Online"});
-        socket.emit("receive",{from: to, message: "not Online"});
+        socket.emit("receive",{from: to1, message: "not Online"});
         }
 
 

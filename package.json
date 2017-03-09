@@ -1,0 +1,17 @@
+{
+  "name": "iot",
+  "version": "0.0.1",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/app.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongodb": "latest",
+    "socket.io": "^1.7.3"
+  },
+  "engines": {
+    "node": "4.5.0",
+    "npm": "2.15.9"
+  }
+}

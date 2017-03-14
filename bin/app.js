@@ -7,7 +7,7 @@ var io=require('socket.io')(http);
 var url="mongodb://jatters:alwaysforward1.@ds058579.mlab.com:58579/jatapp";
 var mc=m.MongoClient;
 var _db;
-var bodyparser=require('body-parser')
+var bodyparser=require('body-parser');
 mc.connect(url,function(err,db){
     if(err)
     {
@@ -33,6 +33,8 @@ next();
 
 app.use(notify);
 app.use(bodyparser.urlencoded({extended:false}));
+
+require('../router/route')(app,io,_db);
 
 
 io.on("connection",function(socket){
@@ -66,7 +68,6 @@ io.on("connection",function(socket){
 
 
 
-require('../router/route')(app,io,_db);
 
 
 

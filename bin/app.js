@@ -28,7 +28,43 @@ next();
 app.use(notify);
 app.use(bodyparser.urlencoded({extended:false}));
 
+
+io.on("connection",function(socket){
+
+    console.log("A user connected:"+socket.id);
+    socket.emit('id',{'id':socket.id});
+
+
+
+    socket.on('register',function(data){
+        var d=JSON.parse(data);
+        console.log("registering user "+d.id);
+        users.user[d.no]=d.id;
+        console.log(users);
+
+    })
+
+
+
+
+    socket.on('disconnect',function(){
+        console.log('A user disconnected '+socket.id);
+    })
+
+
+})
+
+
+
+
+
+
+
 require('../router/route')(app,io,_db);
+
+
+
+
 
 var server=http.listen(process.env.PORT || 8000,function(){
     console.log("server running in port 8000");

@@ -1,2 +1,0 @@
-heroku git:remote -a jatapp
-git push heroku master

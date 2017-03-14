@@ -1,13 +1,15 @@
 {
-  "name": "iot",
+  "name": "jat_app",
   "version": "0.0.1",
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/app.js"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "mongodb": "latest",
+    "idgen": "^2.0.2",
+    "mongodb": "^2.2.24",
     "socket.io": "^1.7.3"
   },
   "engines": {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{siemen/node_modules}" />
+    <file url="file://$PROJECT_DIR$" libraries="{jatapp/node_modules}" />
     <file url="file://$PROJECT_DIR$/bin/app.js" libraries="{nodejs}" />
     <file url="file://$PROJECT_DIR$/router/route.js" libraries="{nodejs}" />
   </component>

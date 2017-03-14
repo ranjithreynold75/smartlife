@@ -20,6 +20,12 @@ mc.connect(url,function(err,db){
 });
 
 
+var users={
+    user:{
+
+    }
+
+};
 function notify(req,res,next){
 console.log("request to "+req.url);
 next();

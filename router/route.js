@@ -25,6 +25,7 @@ module.exports=function(app,io,_db){
            var d=JSON.parse(data);
             console.log("registering user "+d.id);
         users.user[d.no]=d.id;
+            console.log(users);
 
         })
 

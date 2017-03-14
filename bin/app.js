@@ -30,9 +30,9 @@ function notify(req,res,next){
 console.log("request to "+req.url);
 next();
 }
-
-app.use(notify);
 app.use(bodyparser.urlencoded({extended:false}));
+app.use(notify);
+
 
 require('../router/route')(app,io,_db);
 

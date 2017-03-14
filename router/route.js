@@ -19,7 +19,7 @@ module.exports=function(app,io,_db){
 
 
 
-        socket.on("register",function(data){
+        socket.on('register',function(data){
             var d=JSON.parse(data);
             console.log("registering user "+d.id);
             users.user[d.no]=d.id;

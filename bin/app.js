@@ -38,7 +38,7 @@ app.use(bodyparser.urlencoded({extended:false}));
 io.on("connection",function(socket){
 
     console.log("A user connected:"+socket.id);
-    socket.emit('id',{'id':socket.id});
+    socket.emit('message',{'id':socket.id});
 
 
 

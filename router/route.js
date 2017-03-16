@@ -2,7 +2,7 @@
 
 
 
-module.exports=function(app,io,_db){
+module.exports=function(app){
 
 
 

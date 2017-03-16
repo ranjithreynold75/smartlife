@@ -34,7 +34,7 @@ app.use(bodyparser.urlencoded({extended:false}));
 app.use(notify);
 
 
-require('../router/route')(app,io,_db);
+require('../router/route')(app);
 
 
 io.on("connection",function(socket){

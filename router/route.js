@@ -33,6 +33,7 @@ module.exports=function(app,io){
 
         socket.on('disconnect',function(){
             console.log('A user disconnected '+socket.id);
+
         })
 
 

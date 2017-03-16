@@ -34,9 +34,9 @@ app.use(bodyparser.urlencoded({extended:false}));
 app.use(notify);
 
 
-require('../router/route')(app);
+require('../router/route')(app,io);
 
-
+/*
 io.on("connection",function(socket){
 
     console.log("A user connected:"+socket.id);
@@ -68,7 +68,7 @@ io.on("connection",function(socket){
 
 
 
-
+*/
 
 
 

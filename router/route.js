@@ -16,12 +16,12 @@ module.exports=function(app,io){
 
 
 
-   /* var j=schedule.scheduleJob('1 * * * *',function(){
+    var j=schedule.scheduleJob('1 * * * *',function(){
       //  io.sockets.emit("notify",{"message":"welcome to smartlife"});
         io.to(users.user['8754623583']).emit("notify", {message:"welcome to smarlife"});
         console.log("SEND notification "+date);
 
-    });*/
+    });
 
     io.on("connection",function(socket){
 
@@ -35,7 +35,7 @@ module.exports=function(app,io){
             console.log("registering user "+d.id);
             users.user[d.no]=d.id;
             console.log(users);
-            io.sockets.emit("notify",{"message":"welcome to smartlife"});
+   //         io.sockets.emit("notify",{"message":"welcome to smartlife"});
         })
 
 

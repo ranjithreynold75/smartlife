@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bab713a-403e-4579-a815-e875c18b328a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/router/route.js" afterPath="$PROJECT_DIR$/router/route.js" />
     </list>
     <ignored path="jatapp.iws" />
@@ -206,12 +205,12 @@
       <updated>1489470577988</updated>
       <workItem from="1489470579816" duration="12933000" />
       <workItem from="1489497422341" duration="310000" />
-      <workItem from="1489498025605" duration="7528000" />
+      <workItem from="1489498025605" duration="8020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20771000" />
+    <option name="totallyTimeSpent" value="21263000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

@@ -10,7 +10,7 @@ var users={
 };
 
 var rule = new schedule.RecurrenceRule();
-rule.minute = 3;
+rule.minute = 1;
 
 module.exports=function(app,io){
 

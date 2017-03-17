@@ -9,12 +9,14 @@ var users={
 
 };
 
+var rule = new schedule.RecurrenceRule();
+rule.minute = 3;
 
 module.exports=function(app,io){
 
 
 
-    var j=schedule.scheduleJob(date,function(){
+    var j=schedule.scheduleJob(rule,function(){
         io.sockets.emit("notify",{"message":"welcome to smartlife"});
         console.log("SEND notification "+date);
     });

@@ -1,6 +1,6 @@
 var schedule=require('node-schedule');
 
-var date=new Date(2017,3,16,10,52,0);
+var date=new Date(2017,3,16,12,25,0);
 
 var users={
     user:{
@@ -14,6 +14,10 @@ module.exports=function(app,io){
 
 
 
+    var j=schedule.scheduleJob(date,function(){
+        io.sockets.emit("notify",{"message":"welcome to smartlife"});
+        console.log("SEND notification "+date);
+    });
 
     io.on("connection",function(socket){
 
@@ -30,10 +34,6 @@ module.exports=function(app,io){
 
         })
 
-var j=schedule.scheduleJob(date,function(){
-    io.sockets.emit("notify",{"message":"welcome to smartlife"});
-    console.log("SEND notification "+date);
-})
 
 
         socket.on('disconnect',function(){

@@ -16,9 +16,9 @@ module.exports=function(app,io){
 
 
 
-    var j=schedule.scheduleJob('1 * * * *',function(){
-      //  io.sockets.emit("notify",{"message":"welcome to smartlife"});
-        io.to(users.user['8754623583']).emit("notify", {message:"welcome to smarlife"});
+    var j=schedule.scheduleJob(rule,function(){
+       io.sockets.emit("notify",{"message":"welcome to smartlife"});
+       // io.to(users.user['8754623583']).emit("notify", {message:"welcome to smarlife"});
         console.log("SEND notification "+date);
 
     });

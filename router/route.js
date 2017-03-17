@@ -1,6 +1,6 @@
 var schedule=require('node-schedule');
 
-var date=new Date(2017,2,16,12,25,0);
+var date=new Date(2017,2,16,13,06,0);
 
 var users={
     user:{
@@ -16,7 +16,7 @@ module.exports=function(app,io){
 
 
 
-    var j=schedule.scheduleJob(rule,function(){
+    var j=schedule.scheduleJob(date,function(){
        io.sockets.emit("notify",{"message":"welcome to smartlife"});
        // io.to(users.user['8754623583']).emit("notify", {message:"welcome to smarlife"});
         console.log("SEND notification "+date);

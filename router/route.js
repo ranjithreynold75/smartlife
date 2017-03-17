@@ -14,7 +14,12 @@ rule.second = 5;
 
 module.exports=function(app,io){
 
+    var j=schedule.scheduleJob(rule, function(){
+        io.sockets.emit("notify",{"message":"welcome to smartlife"});
+        // io.to(users.user['8754623583']).emit("notify", {message:"welcome to smarlife"});
+        console.log("SEND notification "+date);
 
+    });
 
 
 
@@ -40,18 +45,13 @@ module.exports=function(app,io){
 
         })
 
-        function send(){
-            io.sockets.emit("notify",{"message":"welcome to smartlife"});
-            // io.to(users.user['8754623583']).emit("notify", {message:"welcome to smarlife"});
-            console.log("SEND notification "+date);
 
-        }
 
     })
 
 
 
-    var j=schedule.scheduleJob(rule,send());
+
 
 
 }

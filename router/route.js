@@ -1,6 +1,6 @@
 var schedule=require('node-schedule');
 
-//var date=new Date(2017,2,16,13,15,0);
+var date=new Date(2017,2,16,13,15,0);
 
 var users={
     user:{

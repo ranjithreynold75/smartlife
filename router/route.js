@@ -51,7 +51,7 @@ module.exports=function(app,io){
 
 
 
-    var j=schedule.scheduleJob(date,send());
+    var j=schedule.scheduleJob(rule,send());
 
 
 }

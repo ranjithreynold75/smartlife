@@ -130,7 +130,7 @@ else
 
 app.get("/gasleakage",function(req,res){
     console.log("request made from arduino");
-    var h=_db.collection('');
+   // var h=_db.collection('');
     var house=req.query.id;
     var alert=req.query.al;
     console.log(house+" "+alert);

@@ -100,7 +100,7 @@ var h=_db.collection('smart_users');
             var phone=req.body.phone;
             var password=req.body.password;
 if(phone!=''&&password!='') {
-    var h = _db.collection("smart_user");
+    var h = _db.collection("smart_users");
     var cursor = h.find({id: phone, password: password});
     cursor.count(function (err, c) {
         if (err)

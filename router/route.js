@@ -78,7 +78,7 @@ module.exports=function(app,io){
 var h=_db.collection('smart_users');
             h.insertOne(data,function(err){
                 if(err) {
-                    console.log("mongo error");
+                    console.log(err);
                 res.send("unsuccess");
                 }
                 else {

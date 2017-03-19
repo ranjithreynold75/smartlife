@@ -134,7 +134,7 @@ app.get("/getdata",function(req,res){
     //collection.find({_id:q_id},{_id:0,students:1}).toArray(function (err,d) {
     h.find({_id:1},{_id:0,s:1}).forEach(function(d){
 
-        res.send(d);
+        res.send(d.s);
 
 
     });

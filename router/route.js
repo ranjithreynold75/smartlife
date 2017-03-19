@@ -128,16 +128,18 @@ else
 
 
 
-app.get("/getdata",function(req,res){
+app.get("/gasleakage",function(req,res){
     console.log("request made from arduino");
-    var h=_db.collection('test');
+    var h=_db.collection('');
+    var house=req.query.id;
+    var alert=req.query.al;
+    console.log(house+" "+alert);
+
+res.send("Alert made");
+
+    io.to(users.user[house]).emit("notify", {message:"Gas leakage detected and prevented"});
+
     //collection.find({_id:q_id},{_id:0,students:1}).toArray(function (err,d) {
-    h.find({_id:1},{_id:0,s:1}).forEach(function(d){
-
-        res.send(d);
-
-
-    });
 
 
 })

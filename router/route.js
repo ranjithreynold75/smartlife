@@ -170,11 +170,21 @@ app.get("/parking",function(req,res){
     var msg=req.query.m;
     var id=req.query.id;
 
+    io.to(users.user[id]).emit("notify", {message:msg});
     res.send("Alert made");
 
-    io.to(users.user[id]).emit("notify", {message:msg});
+
 
 })
 
+    app.get("/panic",function(req,res){
+var id=req.query.id;
+
+
+        io.to(users.user[id]).emit("notify", {message:msg});
+res.send("alert made");
+
+
+    })
 
 }

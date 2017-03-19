@@ -2,6 +2,19 @@ var schedule=require('node-schedule');
 var id=require('idgen');
 var date=new Date(2017,2,16,13,15,0);
 
+var url="mongodb://jatters:alwaysforward1.@ds058579.mlab.com:58579/jatapp";
+var mc=m.MongoClient;
+var _db;
+mc.connect(url,function(err,db){
+    if(err)
+    {
+        console.log(err);
+    }
+    else
+    {
+        _db=db;
+    }
+});
 
 
 var users={
@@ -12,9 +25,9 @@ var users={
 };
 
 var rule = new schedule.RecurrenceRule();
-rule.second = 5;
+rule.minute = 5;
 
-module.exports=function(app,io,_db){
+module.exports=function(app,io){
 
     var j=schedule.scheduleJob(rule, function(){
        // io.sockets.emit("notify",{"message":"welcome to smartlife"});
@@ -60,7 +73,7 @@ module.exports=function(app,io,_db){
                  password:req.body.password,
                  no_of_members:req.body.no,
                  house_id:house_id
-             }
+             };
 var h=_db.collection('smart_users');
             h.insertOne(data,function(err){
                 if(err) {

@@ -89,12 +89,7 @@ var h=_db.collection('smart_users');
                 else {
                     console.log("Smart user registered succesfully");
 
-                    if(role=="master")
-                    {
-                        h=_db.collection('house');
-                        h.insertOne({_id:req.body.phone,member:[{name:req.body.name,phone:req.body.phone,longitude:0,latitude:0}]});
 
-                    }
                 res.send("success");
                 }
                 });
@@ -171,7 +166,15 @@ var h=_db.collection('house');
     })
 
 
+app.get("/parking",function(req,res){
+    var msg=req.query.m;
+    var id=req.query.id;
 
+    res.send("Alert made");
+
+    io.to(users.user[id]).emit("notify", {message:msg});
+
+})
 
 
 }

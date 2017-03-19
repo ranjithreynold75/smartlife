@@ -70,7 +70,8 @@ module.exports=function(app,io){
             var house_id=id(8);
            house_id=house_id.toUpperCase();
                console.log("A house signed up");
-             var data={
+            var role=req.body.r;
+            var data={
                  _id:req.body.phone,
              name:req.body.name,
                  email:req.body.email,
@@ -78,6 +79,7 @@ module.exports=function(app,io){
                  no_of_members:req.body.no,
                  house_id:house_id
              };
+
 var h=_db.collection('smart_users');
             h.insertOne(data,function(err){
                 if(err) {
@@ -90,6 +92,12 @@ var h=_db.collection('smart_users');
                 }
                 });
 
+if(role=="master")
+{
+    h=_db.collection('house');
+    h.insertOne({_id:req.body.phone,member:[{name:req.body.name,phone:req.body.phone,longitude:0,latitude:0}]});
+
+}
 
 
 
@@ -143,6 +151,23 @@ res.send("Alert made");
 
 
 })
+
+
+    app.post("/addfamily",function(req,res){
+
+        var house=req.body.id;
+        var member=req.body.m;
+        var name=req.body.name;
+
+        data={
+            member:member,
+            name:name
+        }
+var h=_db.collection('house');
+
+
+
+    })
 
 
 

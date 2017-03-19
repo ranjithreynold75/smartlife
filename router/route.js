@@ -62,10 +62,13 @@ module.exports=function(app,io){
 
     })
 
+
+    //volley request
+
         app.post("/house_signup",function(req,res){
 
             var house_id=id(8);
-            house_id.toUpperCase();
+           house_id=house_id.toUpperCase();
                console.log("A house signed up");
              var data={
                  _id:req.body.phone,
@@ -115,7 +118,7 @@ if(phone!=''&&password!='') {
 }
 else
 {
-    res.send("unsuccess");
+    res.send("Invalid data");
 }
 
         });

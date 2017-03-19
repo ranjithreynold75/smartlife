@@ -132,7 +132,7 @@ app.get("/getdata",function(req,res){
     console.log("request made from arduino");
     var h=_db.collection('test');
     //collection.find({_id:q_id},{_id:0,students:1}).toArray(function (err,d) {
-    h.find({_id:1},{_id:0,value:1}).toArray(function (data) {
+    h.find({_id:1},{_id:0,value:1}).toArray(function(err,data) {
              console.log(data)
 
     })

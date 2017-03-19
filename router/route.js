@@ -88,16 +88,17 @@ var h=_db.collection('smart_users');
                 }
                 else {
                     console.log("Smart user registered succesfully");
+
+                    if(role=="master")
+                    {
+                        h=_db.collection('house');
+                        h.insertOne({_id:req.body.phone,member:[{name:req.body.name,phone:req.body.phone,longitude:0,latitude:0}]});
+
+                    }
                 res.send("success");
                 }
                 });
 
-if(role=="master")
-{
-    h=_db.collection('house');
-    h.insertOne({_id:req.body.phone,member:[{name:req.body.name,phone:req.body.phone,longitude:0,latitude:0}]});
-
-}
 
 
 

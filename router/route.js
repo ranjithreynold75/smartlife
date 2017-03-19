@@ -2,7 +2,7 @@ var schedule=require('node-schedule');
 var id=require('idgen');
 var date=new Date(2017,2,16,13,15,0);
 
-var url="mongodb://jatters:alwaysforward1.@ds058579.mlab.com:58579/jatapp";
+
 
 var users={
     user:{

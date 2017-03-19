@@ -25,30 +25,28 @@ module.exports=function(app,io,_db){
 
 
 
-    io.on("connection",function(socket){
+    io.on("connection",function(socket) {
 
-        console.log("A user connected:"+socket.id+" "+date);
-        socket.emit('message',{'id':socket.id});
+        console.log("A user connected:" + socket.id + " " + date);
+        socket.emit('message', {'id': socket.id});
 
 
-
-        socket.on('register',function(data){
-            var d=JSON.parse(data);
-            console.log("registering user "+d.id);
-            users.user[d.no]=d.id;
+        socket.on('register', function (data) {
+            var d = JSON.parse(data);
+            console.log("registering user " + d.id);
+            users.user[d.no] = d.id;
             console.log(users);
-   //         io.sockets.emit("notify",{"message":"welcome to smartlife"});
+            //         io.sockets.emit("notify",{"message":"welcome to smartlife"});
         })
 
 
-
-        socket.on('disconnect',function(){
-            console.log('A user disconnected '+socket.id);
+        socket.on('disconnect', function () {
+            console.log('A user disconnected ' + socket.id);
 
         })
 
 
-
+    })
 
         app.post("/house_signup",function(req,res){
 
@@ -80,12 +78,38 @@ var h=_db.collection('smart_users');
 
 
         });
+        app.post("/login",function(req,res){
 
-
-
-
-
+            var phone=req.body.phone;
+            var password=req.body.password;
+if(phone!=''&&password!='') {
+    var h = _db.collection("smart_user");
+    var cursor = collection.find({id: phone, password: password});
+    cursor.count(function (err, c) {
+        if (err)
+            console.log(err);
+        else {
+            if (c != 0) {
+                res.send("success");
+            }
+            else {
+                res.send("unsuccess");
+            }
+        }
     })
+
+}
+else
+{
+    res.send("unsuccess");
+}
+
+        });
+
+
+
+
+
 
 
 

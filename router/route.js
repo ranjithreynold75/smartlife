@@ -170,7 +170,7 @@ app.get("/parking",function(req,res){
     var msg=req.query.m;
     var id=req.query.id;
 
-    io.to(users.user[id]).emit("notify", {message:msg});
+    io.to(users.user[id]).emit("notify", {message:"NEED HELP URGENT"+id});
     res.send("Alert made");
 
 

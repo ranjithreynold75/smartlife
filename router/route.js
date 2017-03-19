@@ -106,7 +106,7 @@ if(phone!=''&&password!='') {
         if (err)
             console.log(err);
         else {
-            if (c != 0) {
+            if (c == 1) {
                 console.log("login success");
                 res.send("success");
             }

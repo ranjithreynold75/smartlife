@@ -147,7 +147,7 @@ app.get("/gasleakage",function(req,res){
     //collection.find({_id:q_id},{_id:0,students:1}).toArray(function (err,d) {
 
 
-})
+});
 
 
     app.post("/addfamily",function(req,res){

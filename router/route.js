@@ -139,9 +139,10 @@ app.get("/gasleakage",function(req,res){
     var alert=req.query.al;
     console.log(house+" "+alert);
 
-res.send("Alert made");
-
     io.to(users.user[house]).emit("notify", {message:"Gas leakage detected and prevented"});
+
+    res.send("Alert made");
+
 
     //collection.find({_id:q_id},{_id:0,students:1}).toArray(function (err,d) {
 

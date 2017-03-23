@@ -178,7 +178,7 @@ app.get("/parking",function(req,res){
 
 })
 
-    app.get("/panic",function(req,res){
+app.get("/panic",function(req,res){
 var id=req.query.id;
 
 
@@ -187,5 +187,17 @@ res.send("alert made");
 
 
     })
+app.get("/house_hold",function (req,res) {
+console.log("house_id:"+req.query.id);
+    console.log("Tank:"+req.query.t);
+    console.log("Dust:"+req.query.d);
+
+res.send('{status:"N"}');
+});
+    
+
+
+
+
 
 }

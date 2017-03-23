@@ -202,7 +202,8 @@ if(phone!=''&&password!='') {
                 console.log("login success "+phone);
                 res.send("success");
             }
-            else {
+            else if(c==0)
+            {
                 res.send("unsuccess");
             }
         }

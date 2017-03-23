@@ -65,34 +65,84 @@ module.exports=function(app,io){
 
     //volley request
 
-        app.post("/house_signup",function(req,res){
+        app.post("/signup",function(req,res){
 
-            var house_id=id(8);
-           house_id=house_id.toUpperCase();
+            //var house_id=id(8);
+           //house_id=house_id.toUpperCase();
                console.log("A house signed up");
-            var role=req.body.r;
+            //var role=req.body.r;
             var data={
-                 _id:req.body.phone,
-             name:req.body.name,
+                 _id:req.body.no,
+                name:req.body.name,
                  email:req.body.email,
                  password:req.body.password,
-                 no_of_members:req.body.no,
-                 house_id:house_id
+                house_id:req.body.no
+             };
+             var h_data={
+                 _id:req.body.no,
+                 name:req.body.name+" house",
+                 phone:req.body.no,
+                 members:[{
+                  no:req.body.no,
+                  name:req.body.name
+                 }]
              };
 
-var h=_db.collection('smart_users');
-            h.insertOne(data,function(err){
-                if(err) {
+           var h= _db.collection('smart_users');
+
+      var cursor=h.find({_id:req.body.no});
+
+            cursor.count(function (err,c) {
+                if(err)
                     console.log(err);
-                res.send("unsuccess");
-                }
+
                 else {
-                    console.log("Smart user registered succesfully");
+                    if (c==1)
+                    {
+                    res.send("unsuccess");
+                    }
+                    else
+                    {
+
+                        var h=_db.collection('smart_users');
+                        h.insertOne(data,function(err){
+                            if(err) {
+                                console.log(err);
+                                res.send("unsuccess");
+                            }
+                            else {
+                                console.log("Smart user registered succesfully");
 
 
-                res.send("success");
-                }
-                });
+                                res.send("success");
+                            }
+                        });
+
+                        var h=_db.collection('house');
+                        h.insertOne(data,function(err){
+                            if(err) {
+                                console.log(err);
+                                //    res.send("unsuccess");
+                            }
+                            else {
+                                console.log("Smart user registered successfully");
+
+
+                                //res.send("success");
+                            }
+                        });
+
+
+
+
+                    }
+
+
+                        }
+
+
+                        }
+            )
 
 
 

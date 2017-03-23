@@ -155,12 +155,12 @@ module.exports=function(app,io){
                                         }
                                       h.updateOne({_id:req.body.house_id},{$push:{members:data}});
                                       console.log("added to house memeber");
-                                        res.send("success");
+                                     //   res.send("success");
                                     }
                                     else
                                     {
                                         console.log("invalid house password");
-                                        res.send("unsuccess");
+                                       // res.send("unsuccess");
                                     }
 
 
@@ -194,7 +194,7 @@ if(phone!=''&&password!='') {
             console.log(err);
         else {
             if (c == 1) {
-                console.log("login success");
+                console.log("login success "+phone);
                 res.send("success");
             }
             else {
@@ -216,11 +216,17 @@ else
 
 
 app.get("/gas_leakage",function(req,res){
+
+
+
     console.log("request made from arduino");
    // var h=_db.collection('');
     var house=req.query.id;
     var alert=req.query.al;
     console.log(house+" "+alert);
+
+    var db=_db.collection("house");
+
 
     io.to(users.user[house]).emit("notify", {message:"Gas leakage detected and prevented"});
 
@@ -233,21 +239,7 @@ app.get("/gas_leakage",function(req,res){
 });
 
 
-    app.post("/addfamily",function(req,res){
 
-        var house=req.body.id;
-        var member=req.body.m;
-        var name=req.body.name;
-
-        data={
-            member:member,
-            name:name
-        }
-var h=_db.collection('house');
-
-
-
-    })
 
 
 app.get("/parking",function(req,res){

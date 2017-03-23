@@ -74,51 +74,61 @@ module.exports=function(app,io){
 
 
 
+if(role=="master") {
+    var data = {
+        _id: req.body.no,
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        house_id: req.body.no
+    };
+}
+else
+{
 
-
-                var data = {
-                    _id: req.body.no,
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password,
-                    house_id: req.body.no
-                };
-
+    var data = {
+        _id: req.body.no,
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        house_id: req.body.house_id
+    };
+}
 
                 var h = _db.collection('smart_users');
 
                 var cursor = h.find({_id: req.body.no});
 
                 cursor.count(function (err, c) {
-                        if (err)
-                            console.log(err);
+                    if (err)
+                        console.log(err);
 
+                    else {
+                        if (c == 1) {
+                            res.send("user already exist");
+                        }
                         else {
-                            if (c == 1) {
-                                res.send("user already exist");
-                            }
-                            else {
 
-                                var h = _db.collection('smart_users');
-                                h.insertOne(data, function (err) {
-                                    if (err) {
-                                        console.log(err);
-                                        res.send("unsuccess");
-                                    }
-                                    else {
-                                        console.log("Smart user registered succesfully");
+                            var h = _db.collection('smart_users');
+                            h.insertOne(data, function (err) {
+                                if (err) {
+                                    console.log(err);
+                                    res.send("unsuccess");
+                                }
+                                else {
+                                    console.log("Smart user registered succesfully");
 
 
-                                        res.send("success");
-                                    }
-                                });
+                                    res.send("success");
+                                }
+                            });
 
-                            if(role=="master") {
+                            if (role == "master") {
 
                                 var h_data = {
                                     _id: req.body.no,
                                     name: req.body.name + " house",
-                                    password:req.body.h,
+                                    password: req.body.h,
                                     members: [{
                                         no: req.body.no,
                                         name: req.body.name
@@ -139,43 +149,38 @@ module.exports=function(app,io){
 
                                 });
                             }
-                            else if(role=="member")
-                            {
+                            else if (role == "member") {
                                 var h = _db.collection('house');
-                               var cursor= h.find({_id:req.body.house_id,password:req.body.h})
+                                var cursor = h.find({_id: req.body.house_id, password: req.body.h})
 
-                                cursor.count(function(err,c){
+                                cursor.count(function (err, c) {
 
-                                    if(c==1)
-                                    {
+                                    if (c == 1) {
 
-                                        var data={
-                                            no:req.body.no,
-                                            name:req.body.name
+                                        var data = {
+                                            no: req.body.no,
+                                            name: req.body.name
                                         }
-                                      h.updateOne({_id:req.body.house_id},{$push:{members:data}});
-                                      console.log("added to house memeber");
-                                     //   res.send("success");
+                                        h.updateOne({_id: req.body.house_id}, {$push: {members: data}});
+                                        console.log("added to house member");
+                                        //   res.send("success");
                                     }
-                                    else
-                                    {
+                                    else if (c == 0) {
                                         console.log("invalid house password");
-                                       // res.send("unsuccess");
+                                        // res.send("unsuccess");
                                     }
-
 
 
                                 })
                             }
 
-                            }
-
-
                         }
 
 
                     }
-                )
+
+
+                })
 
 
 

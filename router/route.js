@@ -132,7 +132,7 @@ else
 
 
 
-app.get("/gasleakage",function(req,res){
+app.get("/gas_leakage",function(req,res){
     console.log("request made from arduino");
    // var h=_db.collection('');
     var house=req.query.id;
@@ -141,7 +141,7 @@ app.get("/gasleakage",function(req,res){
 
     io.to(users.user[house]).emit("notify", {message:"Gas leakage detected and prevented"});
 
-    res.send("Alert made");
+    res.send('{status:"Y"}');
 
 
     //collection.find({_id:q_id},{_id:0,students:1}).toArray(function (err,d) {

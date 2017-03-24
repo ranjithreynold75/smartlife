@@ -276,7 +276,7 @@ app.get("/gas_leakage",function(req,res){
 
 
     //io.to(users.user[house]).emit("notify", {message:"Gas leakage detected and prevented"});
-    io.sockets.in("room-"+house).emit('notify',{"message":"Door Lock breach!! ALERT"});
+    io.sockets.in("room-"+house).emit('notify',{"message":"Gas leakage detected and prevented"});
     res.send('{status:"Y"}');
 
 

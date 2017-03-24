@@ -169,7 +169,11 @@ else
                                     members: [{
                                         no: req.body.no,
                                         name: req.body.name
-                                    }]
+                                    }],
+                                    door:"Y",
+                                    tank_level:0,
+                                    garbage_level:0
+
                                 };
                                 var h = _db.collection('house');
                                 h.insertOne(h_data, function (err) {
@@ -314,7 +318,18 @@ res.send('{status:"N"}');
 });
     
 
+app.get("/door",function(req,res){
 
+    var id=req.query.id;
+
+    var h=_db.collection("house");
+    h.find({_id:id}).forEach(function(x){
+         var status=x.door;
+    })
+
+
+
+})
 
 
 

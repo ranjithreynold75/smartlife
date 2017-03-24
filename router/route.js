@@ -431,7 +431,7 @@ if(err)
 
 }
         });*/
-db.find({"members.no":id},{members:1}).forEach(function(x){
+db.find({"members.no":id},{_id:0,members:1}).forEach(function(x){
     console.log(JSON.stringify(x));
     res.send(JSON.stringify(x));
 })

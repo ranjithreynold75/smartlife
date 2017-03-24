@@ -326,7 +326,7 @@ var status;
     h.find({_id:id}).forEach(function(x){
          status=x.door;
     })
-
+console.log(status);
     res.send({status:status});
 
 

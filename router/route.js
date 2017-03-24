@@ -24,6 +24,12 @@ var users={
     }
 
 };
+var rooms{
+    detail:
+    {
+
+    }
+}
 
 var rule = new schedule.RecurrenceRule();
 rule.minute = 5;
@@ -50,13 +56,14 @@ module.exports=function(app,io){
             console.log("registering user " + d.id);
             users.user[d.no] = d.id;
             var phoneno=d.no;
-var room;
+
             var h=_db.collection('house');
             h.find({"members.no":phoneno},{_id:1}).forEach(function(dat){
 
 
                    console.log("user:"+dat._id);
                   room=dat._id;
+                rooms.detail[phoneno]=room;
          socket.join("room-"+room);
                io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
 
@@ -65,6 +72,21 @@ var room;
                    //  io.sockets.emit("notify",{"message":"welcome to smartlife"});
         })
 
+        socket.on("room_message",function(data){
+           var d=JSON.parse(data);
+            var msg=d.message;
+            console.log("room message request by "+d.id);
+
+            var h=_db.collection('house');
+
+                io.sockets.in("room-"+rooms.detail[d.id]).emit('notify',{from:d.id,message:d.message});
+
+
+
+
+
+
+        });
 
         socket.on('disconnect', function () {
             console.log('A user disconnected ' + socket.id);

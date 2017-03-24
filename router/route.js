@@ -30,6 +30,12 @@ var rooms={
 
     }
 }
+var names={
+
+    detail:{
+
+    }
+}
 
 var rule = new schedule.RecurrenceRule();
 rule.minute = 5;
@@ -58,12 +64,13 @@ module.exports=function(app,io){
             var phoneno=d.no;
 
             var h=_db.collection('house');
-            h.find({"members.no":phoneno},{_id:1}).forEach(function(dat){
+            h.find({"members.no":phoneno},{_id:1,"members.name":1}).forEach(function(dat){
 
 
                    console.log("user:"+dat._id);
                   room=dat._id;
                 rooms.detail[phoneno]=room;
+                names.detail[phoneno]=dat.name;
          socket.join("room-"+room);
               // io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
 
@@ -79,7 +86,7 @@ module.exports=function(app,io){
 
             var h=_db.collection('house');
 
-                io.sockets.in("room-"+rooms.detail[d.id]).emit('room_chat',{from:d.id,message:d.message});
+                io.sockets.in("room-"+rooms.detail[d.id]).emit('room_chat',{from:d.id,name:names.detail[d.id],message:d.message});
 
 
         });

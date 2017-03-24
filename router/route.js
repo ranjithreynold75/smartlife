@@ -24,7 +24,7 @@ var users={
     }
 
 };
-var rooms{
+var rooms={
     detail:
     {
 

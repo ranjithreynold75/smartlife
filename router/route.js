@@ -58,7 +58,7 @@ var room;
                    console.log("user:"+dat._id);
                   room=dat._id;
          socket.join("room-"+room);
-               io.socket.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
+               io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
 
             })
             console.log(users);

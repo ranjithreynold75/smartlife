@@ -321,13 +321,16 @@ res.send('{status:"N"}');
 app.get("/door",function(req,res){
 
     var id=req.query.id;
-var status;
+
     var h=_db.collection("house");
     h.find({_id:id}).forEach(function(x){
-         status=x.door;
-    })
+         var status=x.door;
 console.log(status);
-    res.send({status:status});
+        res.send({status:status});
+
+    })
+
+
 
 
 })

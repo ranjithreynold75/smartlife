@@ -417,7 +417,7 @@ console.log(status);
     app.post("/get_family",function (req,res) {
      var id=req.body.id;
         var db=_db.collection("house");
-        db.aggregate({$unwind:"$members"},{$match:{"members.no":id}},{$project:{_id:0,members:1}},function(err,data){
+/*        db.aggregate({$unwind:"$members"},{$match:{"members.no":id}},{$project:{_id:0,members:1}},function(err,data){
 if(err)
     console.log(err);
             else
@@ -430,7 +430,11 @@ if(err)
     res.send(JSON.stringify(data1));
 
 }
-        });
+        });*/
+db.find({"members.no":id}).forEach(function(x){
+    console.log(JSON.stringify(x));
+    res.send(JSON.stringify(x));
+})
     //collection.aggregate({$unwind:"$students"},{$match:{_id:q_id,"students.access":'no'}},{$project:{_id:0,students:1}},function (err,data) {
 
     });

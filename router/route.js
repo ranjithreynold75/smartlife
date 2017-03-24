@@ -51,12 +51,12 @@ module.exports=function(app,io){
             users.user[d.no] = d.id;
             var phoneno=d.no;
             var h=_db.collection('house');
-            h.find({"members.no":phoneno},{_id:1}).toArray(function(err,d){
+            h.find({"members.no":phoneno},{_id:1}).forEach(function(err,d){
                 if(err)
                     console.log(err);
                 else
                 {
-                    console.log(d);
+                    console.log(d._id);
                 }
             })
             console.log(users);

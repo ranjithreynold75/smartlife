@@ -92,7 +92,26 @@ module.exports=function(app,io){
         });
 
         socket.on('p_chat',function(data){
-            
+
+            var d=JSON.parse(data);
+            var from=d.from;
+            var to=d.t;
+            var msg=d.m;
+
+     console.log(d);
+            if(users.user[t])
+            {
+                var s=users.user[t];
+                console.log(s);
+                io.to(s).emit("receive",{from:from,message:m});
+            }
+            else
+            {
+                socket.emit("receive",{from:t,message:"not Online"});
+            }
+
+
+
         })
         
         
@@ -180,22 +199,6 @@ else
                                     garbage_level:0
 
                                 };
-                                var h = _db.collection('house');
-                                h.insertOne(h_data, function (err) {
-                                    if (err) {
-                                        console.log(err);
-                                        //    res.send("unsuccess");
-                                    }
-                                    else {
-                                        console.log("Smart house registered successfully");
-
-
-                                        //res.send("success");
-                                    }
-
-                                });
-
-
                                 var h = _db.collection('house');
                                 h.insertOne(h_data, function (err) {
                                     if (err) {
@@ -417,27 +420,19 @@ console.log(status);
     app.post("/get_family",function (req,res) {
      var id=req.body.id;
         var db=_db.collection("house");
-/*        db.aggregate({$unwind:"$members"},{$match:{"members.no":id}},{$project:{_id:0,members:1}},function(err,data){
-if(err)
-    console.log(err);
-            else
-{
-    var data1={
-        details:data
-    }
-    // console.log(data1.details.length);
-    console.log(JSON.stringify(data1));
-    res.send(JSON.stringify(data1));
 
-}
-        });*/
 db.find({"members.no":id},{_id:0,members:1}).forEach(function(x){
+
     console.log(JSON.stringify(x));
     res.send(JSON.stringify(x));
 })
     //collection.aggregate({$unwind:"$students"},{$match:{_id:q_id,"students.access":'no'}},{$project:{_id:0,students:1}},function (err,data) {
 
     });
+
+
+
+
 
 
 }

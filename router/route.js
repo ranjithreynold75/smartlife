@@ -327,16 +327,16 @@ app.get("/parking",function(req,res){
     io.to(users.user[id]).emit("notify", {message:"NEED HELP URGENT"+id});
     res.send("Alert made");
 
-
-
 })
+
 
 app.get("/panic",function(req,res){
 var id=req.query.id;
 
 
-        io.to(users.user[id]).emit("notify", {message:"NEED HELP URGENT "+id});
-res.send("alert made");
+        //io.to(users.user[id]).emit("notify", {message:"NEED HELP URGENT "+id});
+    io.sockets.in("room-"+req.query.id).emit('notify',{"message":"Panic state in house"});
+    res.send("alert made");
 
 
     })

@@ -341,12 +341,24 @@ res.send("alert made");
 
     })
 app.get("/house_hold",function (req,res) {
-console.log("house_id:"+req.query.id);
+    console.log("house_id:"+req.query.id);
     console.log("Tank:"+req.query.t);
     console.log("Dust:"+req.query.d);
+if(req.query.t==3)
+{
+    io.sockets.in("room-"+rooms.detail[req.query.id]).emit('notify',{"message":"Tank is FULL"});
+
+}
+else if(req.query.t==8)
+{
+    io.sockets.in("room-"+rooms.detail[req.query.id]).emit('notify',{"message":"Tank water level is low->need to refill"});
+
+}
+var db=_db.collection("house");
+    db.updateOne({_id:req.query.id},{$set:{tank_level:req.query.t,garbage_level:req.query.d}});
 
 
-    res.send('{status:"N"}');
+    res.send('{status:"Y"}');
 });
     
 

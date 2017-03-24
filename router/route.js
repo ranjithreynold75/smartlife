@@ -91,7 +91,7 @@ module.exports=function(app,io){
 
         });
 
-        socket.on('p_chat',function(data){
+        socket.on("p_chat",function(data){
 
             var d=JSON.parse(data);
             var from=d.from;
@@ -99,20 +99,20 @@ module.exports=function(app,io){
             var msg=d.m;
 
      console.log(d);
-            if(users.user[t])
+            if(users.user[to])
             {
-                var s=users.user[t];
+                var s=users.user[to];
                 console.log(s);
-                io.to(s).emit("receive",{from:from,message:m});
+                io.to(s).emit("receive",{from:from,message:msg});
             }
             else
             {
-                socket.emit("receive",{from:t,message:"not Online"});
+                socket.emit("receive",{from:to,message:"not Online"});
             }
 
 
 
-        })
+        });
         
         
         socket.on('disconnect', function () {
@@ -121,7 +121,7 @@ module.exports=function(app,io){
         })
 
 
-    })
+    });
 
 
     //volley request

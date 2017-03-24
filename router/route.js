@@ -70,7 +70,7 @@ module.exports=function(app,io){
                    console.log("user:"+dat._id);
                   room=dat._id;
                 rooms.detail[phoneno]=room;
-                names.detail[phoneno]=dat.members[name];
+                names.detail[phoneno]=dat.members["name"];
                 console.log(names);
          socket.join("room-"+room);
               // io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});

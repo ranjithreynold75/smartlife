@@ -75,7 +75,7 @@ module.exports=function(app,io){
         socket.on("room_message",function(data){
            var d=JSON.parse(data);
             var msg=d.message;
-            console.log("room message request by "+d.id);
+            console.log("room message request by "+d.id+" message:"+d.message);
 
             var h=_db.collection('house');
 

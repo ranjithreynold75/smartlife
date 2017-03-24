@@ -36,6 +36,12 @@ var names={
 
     }
 }
+var loc={
+    detail:
+    {
+
+    }
+}
 
 var rule = new schedule.RecurrenceRule();
 rule.minute = 5;
@@ -55,6 +61,20 @@ module.exports=function(app,io){
 
         console.log("A user connected:" + socket.id);
         socket.emit('message', {'id': socket.id});
+
+        socket.on("location",function(data){
+            var d=JSON.parse(data);
+            var id=d.id;
+            var longitude=d.longitude;
+            var latitude=d.latitude;
+           loc.detail[id]={
+             longitude:longitude,
+               latitude:latitude
+           }
+           console.log(loc);
+           socket.emit("get_location",loc);
+        })
+
 
 
         socket.on('register', function (data) {
@@ -448,6 +468,9 @@ db.find({"members.no":id},{_id:0,members:1}).forEach(function(x){
     //collection.aggregate({$unwind:"$students"},{$match:{_id:q_id,"students.access":'no'}},{$project:{_id:0,students:1}},function (err,data) {
 
     });
+
+
+
 
 
 

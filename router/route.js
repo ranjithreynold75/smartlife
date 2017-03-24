@@ -56,7 +56,7 @@ module.exports=function(app,io){
                     console.log(err);
                 else
                 {
-                    console.log(dat._id);
+                    console.log("user:"+dat._id);
                 }
             })
             console.log(users);

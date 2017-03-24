@@ -107,6 +107,7 @@ module.exports=function(app,io){
             }
             else
             {
+                console.log("not online");
                 socket.emit("receive",{from:to,message:"not Online"});
             }
 

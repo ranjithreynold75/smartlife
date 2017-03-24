@@ -54,7 +54,7 @@ module.exports=function(app,io){
             h.find({"members.no":phoneno},{_id:1}).forEach(function(dat){
 
 
-                  //  console.log("user:"+dat._id);
+                   console.log("user:"+dat._id);
 
             })
             console.log(users);

@@ -334,7 +334,32 @@ console.log(status);
 
 
 })
+
+    app.post("/get_door",function(req,res){
+        var id=req.body.id;
+        var h=_db.collection("house");
+        h.find({"members.no":id},{door:1}).forEach(function (x) {
+            res.send(x.door);
+        })
+
+    })
+
+
     app.post("/door_change",function(req,res){
+
+        var h_id=req.body.h;
+        var pass=req.body.pass;
+
+        var h=_db.collection("house");
+    var cursor=h.find({_id:h_id,password:pass});
+        cursor.count(function(err,c){
+            if(c==1)
+            {
+
+            }
+        })
+
+
 
     })
 

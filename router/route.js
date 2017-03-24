@@ -50,11 +50,15 @@ module.exports=function(app,io){
             console.log("registering user " + d.id);
             users.user[d.no] = d.id;
             var phoneno=d.no;
+var room;
             var h=_db.collection('house');
             h.find({"members.no":phoneno},{_id:1}).forEach(function(dat){
 
 
                    console.log("user:"+dat._id);
+                  room=dat._id;
+         socket.join("room-"+room);
+               io.socket.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
 
             })
             console.log(users);

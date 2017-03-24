@@ -98,7 +98,7 @@ module.exports=function(app,io){
             var to=d.t;
             var msg=d.m;
 
-     console.log(d);
+     console.log(d.from);
             if(users.user[to])
             {
                 var s=users.user[to];

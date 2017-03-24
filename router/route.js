@@ -470,14 +470,15 @@ db.find({"members.no":id},{_id:0,members:1}).forEach(function(x){
     });
 
 
-app.post("/get_tank",function(req,res){
-    var id=req.body.id;
-    var db=_db.collection("house");
-    db.find({"members.no":id}).forEach(function(x){
+app.post("/get_tank",function(req,res) {
+    var id = req.body.id;
+    var db = _db.collection("house");
+    db.find({"members.no": id}).forEach(function (x) {
 
         res.send(x.tank_level);
     })
 
+})
     app.post("/get_garbage",function(req,res){
         var id=req.body.id;
         var db=_db.collection("house");

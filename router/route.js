@@ -277,10 +277,11 @@ app.get("/gas_leakage",function(req,res){
 
     //io.to(users.user[house]).emit("notify", {message:"Gas leakage detected and prevented"});
     io.sockets.in("room-"+house).emit('notify',{"message":"Gas leakage detected and prevented"});
-    res.send('{status:"Y"}');
 
     var db=_db.collection("house");
-     db.updateOne({_id:house},{$set:{door:"N"}});
+    db.updateOne({_id:house},{$set:{door:"N"}});
+    res.send('{status:"Y"}');
+
 
     //collection.find({_id:q_id},{_id:0,students:1}).toArray(function (err,d) {
 

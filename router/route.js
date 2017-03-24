@@ -37,8 +37,7 @@ var names={
     }
 }
 var loc={
-    detail:
-    {
+    detail: {
 
     }
 }
@@ -381,7 +380,9 @@ else if(req.query.t==8)
     }
 
 var db=_db.collection("house");
-    db.updateOne({_id:req.query.id},{$set:{tank_level:req.query.t,garbage_level:req.query.d}});
+    var dval=((15-req.query.d/15)*100);
+var tval=((6-req.query.d/6)*100);
+    db.updateOne({_id:req.query.id},{$set:{tank_level:tval,garbage_level:dval}});
 
 
     res.send('{status:"Y"}');

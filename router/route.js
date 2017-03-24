@@ -334,7 +334,20 @@ console.log(status);
 
 
 })
+    app.post("/door_change",function(req,res){
 
+    })
+
+
+    app.get("/door_alert",function(req,res){
+
+        var id=req.query.id;
+
+        io.sockets.in("room-"+rooms.detail[id]).emit('notify',{"message":"Door Lock breach!! ALERT"});
+
+
+
+    })
 
 
 }

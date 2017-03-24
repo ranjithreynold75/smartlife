@@ -95,7 +95,7 @@ module.exports=function(app,io){
 
             var d=JSON.parse(data);
             var from=d.from;
-            var to=d.t;
+            var to1=d.t;
             var msg=d.m;
 
      console.log(d.from);
@@ -108,7 +108,7 @@ module.exports=function(app,io){
             else
             {
                 console.log("not online");
-                socket.emit("receive",{from:to,message:"not Online"});
+                socket.emit("receive",{from:to1,message:"not Online"});
             }
 
 

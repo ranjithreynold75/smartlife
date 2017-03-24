@@ -99,9 +99,9 @@ module.exports=function(app,io){
             var msg=d.m;
 
      console.log(d.from);
-            if(users.user[to])
+            if(users.user[to1])
             {
-                var s=users.user[to];
+                var s=users.user[to1];
                 console.log(s);
                 io.to(s).emit("receive",{from:from,message:msg});
             }

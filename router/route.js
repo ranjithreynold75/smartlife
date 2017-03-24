@@ -51,13 +51,11 @@ module.exports=function(app,io){
             users.user[d.no] = d.id;
             var phoneno=d.no;
             var h=_db.collection('house');
-            h.find({"members.no":phoneno},{_id:1}).forEach(function(err,dat){
-                if(err)
-                    console.log(err);
-                else
-                {
-                    console.log("user:"+dat._id);
-                }
+            h.find({"members.no":phoneno},{_id:1}).forEach(function(dat){
+
+
+                  //  console.log("user:"+dat._id);
+
             })
             console.log(users);
                    //  io.sockets.emit("notify",{"message":"welcome to smartlife"});

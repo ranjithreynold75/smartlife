@@ -91,6 +91,11 @@ module.exports=function(app,io){
 
         });
 
+        socket.on('p_chat',function(data){
+            
+        })
+        
+        
         socket.on('disconnect', function () {
             console.log('A user disconnected ' + socket.id);
 
@@ -189,6 +194,25 @@ else
                                     }
 
                                 });
+
+
+                                var h = _db.collection('house');
+                                h.insertOne(h_data, function (err) {
+                                    if (err) {
+                                        console.log(err);
+                                        //    res.send("unsuccess");
+                                    }
+                                    else {
+                                        console.log("Smart house registered successfully");
+
+
+                                        //res.send("success");
+                                    }
+
+                                });
+
+
+
                             }
                             else if (role == "member") {
                                 var h = _db.collection('house');
@@ -317,7 +341,8 @@ console.log("house_id:"+req.query.id);
     console.log("Tank:"+req.query.t);
     console.log("Dust:"+req.query.d);
 
-res.send('{status:"N"}');
+
+    res.send('{status:"N"}');
 });
     
 
@@ -388,6 +413,27 @@ console.log(status);
 
 
     })
+
+    app.post("/get_family",function (req,res) {
+     var id=req.body.id;
+        var db=_db.collection("house");
+        db.aggregate({$unwind:"$members"},{$match:{"members.no":id}},{$project:{_id:0,members:1}},function(err,data){
+if(err)
+    console.log(err);
+            else
+{
+    var data1={
+        details:data
+    }
+    // console.log(data1.details.length);
+    console.log(JSON.stringify(data1));
+    res.send(JSON.stringify(data1));
+
+}
+        });
+    //collection.aggregate({$unwind:"$students"},{$match:{_id:q_id,"students.access":'no'}},{$project:{_id:0,students:1}},function (err,data) {
+
+    });
 
 
 }

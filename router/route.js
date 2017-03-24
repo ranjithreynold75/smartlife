@@ -355,16 +355,18 @@ console.log(status);
         cursor.count(function(err,c){
             if(c==1)
             {
-             if(st=="ON")
+             if(st=="on")
              {
                  var d=_db.collection("house");
                  d.updateOne({_id:h_id},{$set:{door:"Y"}});
+                 res.send("Door lock active");
              }
 
-               else if(st=="OFF")
+               else if(st=="off")
                 {
                     var d=_db.collection("house");
                     d.updateOne({_id:h_id},{$set:{door:"N"}});
+                res.send("Door lock Deactivated");
                 }
             }
         })

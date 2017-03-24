@@ -65,7 +65,7 @@ module.exports=function(app,io){
                   room=dat._id;
                 rooms.detail[phoneno]=room;
          socket.join("room-"+room);
-               io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
+              // io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
 
             })
             console.log(users);
@@ -79,11 +79,7 @@ module.exports=function(app,io){
 
             var h=_db.collection('house');
 
-                io.sockets.in("room-"+rooms.detail[d.id]).emit('notify',{from:d.id,message:d.message});
-
-
-
-
+                io.sockets.in("room-"+rooms.detail[d.id]).emit('room_chat',{from:d.id,message:d.message});
 
 
         });

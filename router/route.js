@@ -41,7 +41,7 @@ module.exports=function(app,io){
 
     io.on("connection",function(socket) {
 
-        console.log("A user connected:" + socket.id + " " + date);
+        console.log("A user connected:" + socket.id);
         socket.emit('message', {'id': socket.id});
 
 
@@ -49,8 +49,18 @@ module.exports=function(app,io){
             var d = JSON.parse(data);
             console.log("registering user " + d.id);
             users.user[d.no] = d.id;
+            var phoneno=d.no;
+            var h=_db.collection('house');
+            h.find({"members.no":phoneno},{_id:1}).toArray(function(err,d){
+                if(err)
+                    console.log(err);
+                else
+                {
+                    console.log(d);
+                }
+            })
             console.log(users);
-            //         io.sockets.emit("notify",{"message":"welcome to smartlife"});
+                   //  io.sockets.emit("notify",{"message":"welcome to smartlife"});
         })
 
 

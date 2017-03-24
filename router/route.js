@@ -349,13 +349,23 @@ console.log(status);
 
         var h_id=req.body.h;
         var pass=req.body.pass;
-
+        var st=req.body.st;
         var h=_db.collection("house");
     var cursor=h.find({_id:h_id,password:pass});
         cursor.count(function(err,c){
             if(c==1)
             {
+             if(st=="ON")
+             {
+                 var d=_db.collection("house");
+                 d.updateOne({_id:h_id},{$set:{door:"Y"}});
+             }
 
+               else if(st=="OFF")
+                {
+                    var d=_db.collection("house");
+                    d.updateOne({_id:h_id},{$set:{door:"N"}});
+                }
             }
         })
 

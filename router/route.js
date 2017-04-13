@@ -476,7 +476,7 @@ app.post("/get_tank",function(req,res) {
     var db = _db.collection("house");
     db.find({"members.no": id}).forEach(function (x) {
 
-        res.send(x.tank_level);
+        res.send({tank:x.tank_level});
     })
 
 })
@@ -485,7 +485,7 @@ app.post("/get_tank",function(req,res) {
         var db=_db.collection("house");
         db.find({"members.no":id}).forEach(function(x){
 
-            res.send(x.garbage_level);
+            res.send({garbage:x.garbage_level});
         })
 
 

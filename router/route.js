@@ -134,7 +134,7 @@ module.exports=function(app,io){
             var msg=d.m;
 
      console.log(d.from);
-            if(users.status[to1].equals("online"))
+            if((users.status[to1]).equals("online"))
             {
                 var s=users.user[to1];
                 console.log(s);

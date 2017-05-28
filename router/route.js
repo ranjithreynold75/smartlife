@@ -21,6 +21,12 @@ mc.connect(url,function(err,db){
 var users={
     user:{
 
+    },
+    status:{
+
+    },
+    id:{
+
     }
 
 };
@@ -71,8 +77,11 @@ module.exports=function(app,io){
                latitude:latitude
            }
            console.log(loc);
-           socket.emit("get_location",loc);
+         //  socket.emit("get_location",loc);
         })
+
+
+
 
 
 
@@ -81,6 +90,13 @@ module.exports=function(app,io){
             console.log("registering user " + d.id);
             users.user[d.no] = d.id;
             var phoneno=d.no;
+
+            users.status[user]="online";
+            users.id[d.id]=d.no;
+            var db=_db.collection('smart_users');
+            db.updateOne({_id:user},{$set:{status:status}});
+
+            console.log("user status:"+users);
 
             var h=_db.collection('house');
             h.find({"members.no":phoneno},{_id:1}).forEach(function(dat){
@@ -118,16 +134,16 @@ module.exports=function(app,io){
             var msg=d.m;
 
      console.log(d.from);
-            if(users.user[to1])
+            if(users.status[to1].equals("online"))
             {
                 var s=users.user[to1];
                 console.log(s);
-                io.to(s).emit("receive",{from:from,message:msg});
+                io.to(s).emit("receive",{from:from,to:to1,message:msg});
             }
             else
             {
-                console.log("not online");
-                socket.emit("receive",{from:to1,message:"not Online"});
+                console.log("offline");
+                socket.emit("receive",{from:to1,to:from,message:"offline"});
             }
 
 
@@ -137,6 +153,10 @@ module.exports=function(app,io){
         
         socket.on('disconnect', function () {
             console.log('A user disconnected ' + socket.id);
+
+            users.status[users.id[socket.id]]="offline";
+            console.log(users);
+
 
         })
 

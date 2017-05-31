@@ -13,6 +13,8 @@ next();
 }
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(notify);
+app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname+'/public/image'));
 
 
 require('../router/route')(app,io);

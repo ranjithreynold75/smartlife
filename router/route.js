@@ -9,7 +9,7 @@ var _db;
 
 
 var multer=require("multer");
-var upload=multer({des:'/tmp/'});
+var upload=multer({dest:'/tmp/'});
 var fs=require('fs');
 
 

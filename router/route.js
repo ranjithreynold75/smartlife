@@ -341,13 +341,20 @@ fs.readFile(req.file.path,function(err,data){
     app.post("/getimage",function(req,res){
 
         var id=req.body.id;
-        var folder='/app/router/';  //path1.join(__dirname,id+".jpg");
-        console.log(folder);
-        var image = fs.readFileSync(__dirname+'/8754623583.jpg');
-                  var data=new Buffer(image).toString("base64");
-                    console.log("image readed:");
-                   console.log(__dirname);
-            res.send("IMAGE PROCESS");
+       fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
+           if(err) {
+               console.log(err);
+           res.send("unsuccess");
+           }
+           else
+           {
+               res.send(data);
+           }
+           });
+
+
+
+
     });
 
 

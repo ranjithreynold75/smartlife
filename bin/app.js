@@ -14,7 +14,7 @@ next();
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(notify);
 app.use(express.static(path.join(__dirname+'../profile')));
-
+app.use(express.static(path.join(__dirname)));
 
 
 require('../router/route')(app,io);

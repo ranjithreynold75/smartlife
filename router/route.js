@@ -339,9 +339,10 @@ fs.readFile(req.file.path,function(err,data){
 
 
     app.post("/getimage",function(req,res){
+        var id=req.body.id;
         var folder=path1.join(__dirname,id+".jpg");
         console.log(folder);
-        var id=req.body.id;
+
         fs.readdir(folder,function(err,files){
         if(err)
         {
@@ -356,6 +357,10 @@ fs.readFile(req.file.path,function(err,data){
                     console.log("image readed:"+id);
                     res.send(data);
                     console.log("image sent for:"+id);
+                }
+                else
+                {
+                    res.send("unsuccess");
                 }
 
 

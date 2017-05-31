@@ -6,6 +6,14 @@ var m=require('mongodb');
 var url="mongodb://jatters:alwaysforward1.@ds058579.mlab.com:58579/jatapp";
 var mc=m.MongoClient;
 var _db;
+
+
+var multer=require("multer");
+var upload=multer({des:'/tmp/'});
+var fs=require('fs');
+
+
+
 mc.connect(url,function(err,db){
     if(err)
     {
@@ -134,6 +142,7 @@ module.exports=function(app,io){
             var msg=d.m;
 
      console.log(d.from);
+
             if(users.status[to1]=="online")
             {
                 var s=users.user[to1];
@@ -295,6 +304,68 @@ else
 
 
         });
+
+
+    app.post("/uploadimage",upload.single("avatar"),function(req,res){
+        console.log("image uploaded");
+        var id=req.body.id;
+        var filepath=__dirname+"/profile/"+id+".jpg";
+fs.readFile(req.file.path,function(err,data){
+    if(err)
+        console.log(err);
+    else
+    {
+        fs.writeFile(filepath,data,function(err){
+            if(err) {
+                console.log(err);
+
+            res.send("unsuccess");
+            }
+            else
+            {
+                console.log("image Stored successfully");
+       res.send("success");
+            }
+        });
+    }
+})
+
+
+    });
+
+var folder=__dirname+"/profile/";
+    app.post("/getimage",function(req,res){
+
+        var id=req.body.id;
+        fs.readdir(folder,function(err,files){
+        if(err)
+        {
+            res.send("unsuccess");
+        }
+
+        else {
+            files.forEach(function (f) {
+                if (f == id) {
+                    var image = fs.readFileSync(f);
+                    var data=new Buffer(image).toString("base64");
+                    console.log("image readed:"+id);
+                    res.send(data);
+                    console.log("image sent for:"+id);
+                }
+
+
+            })
+
+        }
+        })
+
+
+    })
+
+
+
+
+
         app.post("/login",function(req,res){
 
             var phone=req.body.phone;

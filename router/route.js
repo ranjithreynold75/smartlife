@@ -360,9 +360,9 @@ fs.readFile(req.file.path,function(err,data){
     var urlencoder=bodyparser.urlencoded({extended:false});
 
     app.post("/get_image",urlencoder,function(req,res){
-        var id=req.body;
-        console.log(id);
-        fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
+        var i=JSON.parse(req.body.p);
+        console.log(i);
+        fs.readFile(__dirname+"/"+i+".jpg",function(err,data){
             if(err) {
                 console.log(err);
                 res.send("unsuccess");

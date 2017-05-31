@@ -342,7 +342,6 @@ fs.readFile(req.file.path,function(err,data){
         var id=req.body.id;
         var folder=path1.join(__dirname,id+".jpg");
         console.log(folder);
-res.sendFile(folder);
         fs.readdir(folder,function(err,files){
         if(err)
         {
@@ -351,8 +350,8 @@ res.sendFile(folder);
 
         else {
             files.forEach(function (f) {
-                if (f == id) {
-                    var image = fs.readFileSync(f);
+                if (f == id+".jpg") {
+                    var image = fs.readFileSync(__dirname+"/"+f);
                     var data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
                     res.send(data);

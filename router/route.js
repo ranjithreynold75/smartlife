@@ -361,12 +361,6 @@ fs.readFile(req.file.path,function(err,data){
                     res.send(data);
                     console.log("image sent for:"+id);
                 }
-                else
-                {
-                    console.log("error image sending");
-                    res.send("unsuccess");
-                }
-
 
             })
 

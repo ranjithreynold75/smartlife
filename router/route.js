@@ -358,7 +358,7 @@ fs.readFile(req.file.path,function(err,data){
                     var image = fs.readFileSync(__dirname+'/'+f);
                     var data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
-                   console.log(data);
+                   console.log(__dirname);
                     res.send(data);
                     console.log("image sent for:"+id);
 

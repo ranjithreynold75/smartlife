@@ -361,7 +361,7 @@ fs.readFile(req.file.path,function(err,data){
                    console.log(data);
                     res.send(data);
                     console.log("image sent for:"+id);
-                exit(0);
+
                 }
 
             })

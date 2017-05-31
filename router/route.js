@@ -341,6 +341,7 @@ fs.readFile(req.file.path,function(err,data){
     app.post("/getimage",function(req,res){
 
         var id=req.body.p;
+        console.log(id);
        fs.readFile(__dirname+"/8754623583.jpg",function(err,data){
            if(err) {
                console.log(err);

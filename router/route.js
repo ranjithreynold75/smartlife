@@ -353,27 +353,23 @@ fs.readFile(req.file.path,function(err,data){
         }
 
         else {
-            files.forEach(function (f) {
-                console.log(f);
-                //noinspection JSAnnotator
-                if (f == id+".jpg") {
 
-                    var image = fs.readFileSync(__dirname+'/'+f);
+                    var image = fs.readFileSync(__dirname+'/'+id+".jpg");
                     data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
                    console.log(__dirname);
-flag=1;
+
+            res.send(data);
+
                     console.log("image sent for:"+id);
 
                 }
 
-            })
 
-        }
+
         });
 
-        if(flag==1)
-        res.send(data);
+
 
     });
 

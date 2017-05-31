@@ -340,7 +340,7 @@ fs.readFile(req.file.path,function(err,data){
 
     app.post("/getimage",function(req,res){
 
-        var id=req.body.p;
+        var id1=req.body.s;
         console.log(id);
        fs.readFile(__dirname+"/8754623583.jpg",function(err,data){
            if(err) {
@@ -360,7 +360,7 @@ fs.readFile(req.file.path,function(err,data){
     var urlencoder=bodyparser.urlencoded({extended:false});
 
     app.post("/get_image",urlencoder,function(req,res){
-        var id=req.body.p;
+        var id=req.body;
         console.log(id);
         fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
             if(err) {

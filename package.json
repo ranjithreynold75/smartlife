@@ -12,7 +12,8 @@
     "mongodb": "^2.2.24",
     "node-schedule": "^1.2.1",
     "socket.io": "^1.7.3",
-    "multer":"latest"
+    "multer":"latest",
+    "path":"latest"
   },
   "engines": {
     "node": "4.5.0",

@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bab713a-403e-4579-a815-e875c18b328a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/router/9500883756.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/router/9597653749.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/router/9884426211.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/router/route.js" afterPath="$PROJECT_DIR$/router/route.js" />
     </list>
     <ignored path="jatapp.iws" />
@@ -55,8 +51,8 @@
       <file leaf-file-name="route.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/router/route.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="344" column="0" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
+            <state relative-caret-position="111">
+              <caret line="344" column="21" selection-start-line="344" selection-start-column="21" selection-end-line="344" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -280,12 +276,12 @@
       <workItem from="1493957341861" duration="595000" />
       <workItem from="1495913809263" duration="13550000" />
       <workItem from="1496163344751" duration="1391000" />
-      <workItem from="1496193003769" duration="14495000" />
+      <workItem from="1496193003769" duration="14660000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153084000" />
+    <option name="totallyTimeSpent" value="153249000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -723,8 +719,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/router/route.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="344" column="0" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
+        <state relative-caret-position="111">
+          <caret line="344" column="21" selection-start-line="344" selection-start-column="21" selection-end-line="344" selection-end-column="21" />
           <folding />
         </state>
       </provider>

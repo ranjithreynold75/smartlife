@@ -342,7 +342,7 @@ fs.readFile(req.file.path,function(err,data){
         var id=req.body.id;
         var folder=path1.join(__dirname,id+".jpg");
         console.log(folder);
-
+res.sendFile(folder);
         fs.readdir(folder,function(err,files){
         if(err)
         {

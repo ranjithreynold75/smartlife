@@ -359,7 +359,7 @@ fs.readFile(req.file.path,function(err,data){
                     var data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
                    console.log(__dirname);
-                    res.send(data);
+                    res.send("hai");
                     console.log("image sent for:"+id);
 
                 }

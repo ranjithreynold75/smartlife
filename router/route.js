@@ -358,6 +358,21 @@ fs.readFile(req.file.path,function(err,data){
 
     });
 
+    app.post("/get_image",function(req,res){
+        var id=req.body.p;
+        console.log(id);
+        fs.readFile(__dirname+"/8754623583.jpg",function(err,data){
+            if(err) {
+                console.log(err);
+                res.send("unsuccess");
+            }
+            else
+            {
+                res.send(data);
+            }
+        });
+
+    });
 
 
 

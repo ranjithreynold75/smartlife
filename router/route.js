@@ -342,6 +342,7 @@ fs.readFile(req.file.path,function(err,data){
         var id=req.body.id;
         var folder='/app/router/';  //path1.join(__dirname,id+".jpg");
         console.log(folder);
+        var data;
         fs.readdir(folder,function(err,files){
         if(err)
         {
@@ -353,13 +354,14 @@ fs.readFile(req.file.path,function(err,data){
         else {
             files.forEach(function (f) {
                 console.log(f);
+                //noinspection JSAnnotator
                 if (f == id+".jpg") {
 
                     var image = fs.readFileSync(__dirname+'/'+f);
-                    var data=new Buffer(image).toString("base64");
+                    data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
                    console.log(__dirname);
-                    res.end(data);
+
                     console.log("image sent for:"+id);
 
                 }
@@ -368,7 +370,7 @@ fs.readFile(req.file.path,function(err,data){
 
         }
         })
-
+        res.send(data);
 
     })
 

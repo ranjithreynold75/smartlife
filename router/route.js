@@ -342,30 +342,23 @@ fs.readFile(req.file.path,function(err,data){
         var id=req.body.id;
         var folder='/app/router/';  //path1.join(__dirname,id+".jpg");
         console.log(folder);
-        var data="unsuccess";
+
         var flag=0;
-        fs.readdir(folder,function(err,files){
-        if(err)
-        {
-            res.send("unsuccess");
-            console.log(err);
 
-        }
 
-        else {
+
 
                     var image = fs.readFileSync(__dirname+'/'+id+".jpg");
-                    data=new Buffer(image).toString("base64");
+                  var data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
                    console.log(__dirname);
             res.send(data);
 
 
-                }
 
 
 
-        });
+
 
 
 

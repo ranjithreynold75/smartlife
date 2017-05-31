@@ -310,8 +310,8 @@ else
         console.log("image uploaded");
         var id=req.body.id;
         //path1.join(__dirname,'../public','login.html')
-        var filepath=path1.join(__dirname,"../profile",id+".jpg");
-        console.log(filepath);
+        var filepath=path1.join("/app/profile",id+".jpg");
+        console.log(path1.dirname(require.main.profile));
 fs.readFile(req.file.path,function(err,data){
     if(err) {
         console.log(err);

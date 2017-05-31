@@ -345,12 +345,15 @@ fs.readFile(req.file.path,function(err,data){
         fs.readdir(folder,function(err,files){
         if(err)
         {
+            console.log(err);
             res.send("unsuccess");
         }
 
         else {
             files.forEach(function (f) {
+                console.log(f);
                 if (f == id+".jpg") {
+
                     var image = fs.readFileSync(__dirname+"/"+f);
                     var data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
@@ -359,6 +362,7 @@ fs.readFile(req.file.path,function(err,data){
                 }
                 else
                 {
+                    console.log("error image sending");
                     res.send("unsuccess");
                 }
 

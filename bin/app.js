@@ -3,7 +3,7 @@ var app=express();
 var http=require('http').Server(app);
 var io=require('socket.io')(http);
 //var url="mongodb://@localhost:27017/jatapp";
-
+var path=require("path");
 var bodyparser=require('body-parser');
 
 
@@ -13,7 +13,7 @@ next();
 }
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(notify);
-app.use(express.static(__dirname+'/profile'));
+app.use(express.static(path.join(__dirname+'/profile')));
 
 
 

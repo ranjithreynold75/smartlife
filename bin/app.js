@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname+'../profile')));
 app.use(bodyparser.json({limit:'50mb'}));
 app.use(bodyparser.urlencoded({limit:'50mb',extended:true}));
 
-require('../router/route')(app,io);
+require('../router/route')(app,io,bodyparser);
 
 
 /*

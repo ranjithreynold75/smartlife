@@ -59,7 +59,7 @@ var loc={
 var rule = new schedule.RecurrenceRule();
 rule.minute = 5;
 
-module.exports=function(app,io){
+module.exports=function(app,io,bodyparser){
 
   /*  var j=schedule.scheduleJob(rule, function(){
        // io.sockets.emit("notify",{"message":"welcome to smartlife"});
@@ -357,11 +357,12 @@ fs.readFile(req.file.path,function(err,data){
 
 
     });
+    var urlencoder=bodyparser.urlencoded({extended:false});
 
-    app.post("/get_image",function(req,res){
+    app.post("/get_image",urlencoder,function(req,res){
         var id=req.body.p;
         console.log(id);
-        fs.readFile(__dirname+"/8754623583.jpg",function(err,data){
+        fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
             if(err) {
                 console.log(err);
                 res.send("unsuccess");

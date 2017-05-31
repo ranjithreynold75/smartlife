@@ -11,7 +11,7 @@ var _db;
 var multer=require("multer");
 var upload=multer({dest:'/tmp/'});
 var fs=require('fs');
-
+var path1=require('path');
 
 
 mc.connect(url,function(err,db){
@@ -309,7 +309,8 @@ else
     app.post("/uploadimage",upload.single("avatar"),function(req,res){
         console.log("image uploaded");
         var id=req.body.id;
-        var filepath="../profile/"+id+".jpg";
+        //path1.join(__dirname,'../public','login.html')
+        var filepath=path1.join(__dirname,"../profile/",id+".jpg");
 fs.readFile(req.file.path,function(err,data){
     if(err)
         console.log(err);
@@ -333,7 +334,7 @@ fs.readFile(req.file.path,function(err,data){
 
     });
 
-var folder=__dirname+"/profile/";
+var folder=path1.join(__dirname,"../profile/",id+".jpg");
     app.post("/getimage",function(req,res){
 
         var id=req.body.id;

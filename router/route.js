@@ -310,7 +310,7 @@ else
         console.log("image uploaded");
         var id=req.body.id;
         //path1.join(__dirname,'../public','login.html')
-        var filepath=path1.join(__dirname+'/public',id+".jpg");
+        var filepath=path1.join(__dirname,id+".jpg");
         console.log(filepath);
 fs.readFile(req.file.path,function(err,data){
     if(err) {
@@ -339,7 +339,7 @@ fs.readFile(req.file.path,function(err,data){
 
 
     app.post("/getimage",function(req,res){
-        var folder=path1.join(__dirname+'/public',id+".jpg");
+        var folder=path1.join(__dirname,id+".jpg");
         console.log(folder);
         var id=req.body.id;
         fs.readdir(folder,function(err,files){

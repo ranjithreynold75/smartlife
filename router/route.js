@@ -343,6 +343,7 @@ fs.readFile(req.file.path,function(err,data){
         var folder='/app/router/';  //path1.join(__dirname,id+".jpg");
         console.log(folder);
         var data="unsuccess";
+        var flag=0;
         fs.readdir(folder,function(err,files){
         if(err)
         {
@@ -361,7 +362,7 @@ fs.readFile(req.file.path,function(err,data){
                     data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
                    console.log(__dirname);
-
+flag=1;
                     console.log("image sent for:"+id);
 
                 }
@@ -369,10 +370,12 @@ fs.readFile(req.file.path,function(err,data){
             })
 
         }
-        })
+        });
+
+        if(flag==1)
         res.send(data);
 
-    })
+    });
 
 
 

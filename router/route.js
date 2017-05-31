@@ -358,10 +358,8 @@ fs.readFile(req.file.path,function(err,data){
                     data=new Buffer(image).toString("base64");
                     console.log("image readed:"+id);
                    console.log(__dirname);
-
             res.send(data);
 
-                    console.log("image sent for:"+id);
 
                 }
 

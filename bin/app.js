@@ -61,3 +61,4 @@ var server=http.listen(process.env.PORT || 8000,function(){
     console.log("server running in port 8000");
 });
 
+server.timeout=15000;

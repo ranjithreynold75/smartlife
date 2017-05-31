@@ -309,7 +309,7 @@ else
     app.post("/uploadimage",upload.single("avatar"),function(req,res){
         console.log("image uploaded");
         var id=req.body.id;
-        var filepath=__dirname+"/profile/"+id+".jpg";
+        var filepath="../profile/"+id+".jpg";
 fs.readFile(req.file.path,function(err,data){
     if(err)
         console.log(err);

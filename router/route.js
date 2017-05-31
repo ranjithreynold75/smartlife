@@ -342,7 +342,7 @@ fs.readFile(req.file.path,function(err,data){
         var id=req.body.id;
         var folder='/app/router/';  //path1.join(__dirname,id+".jpg");
         console.log(folder);
-        var data;
+        var data="unsuccess";
         fs.readdir(folder,function(err,files){
         if(err)
         {

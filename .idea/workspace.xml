@@ -4,10 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/router/route.js" line="410" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bab713a-403e-4579-a815-e875c18b328a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/router/route.js" afterPath="$PROJECT_DIR$/router/route.js" />
-    </list>
+    <list default="true" id="4bab713a-403e-4579-a815-e875c18b328a" name="Default" comment="" />
     <ignored path="jatapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -264,12 +261,12 @@
       <workItem from="1495913809263" duration="13550000" />
       <workItem from="1496163344751" duration="1391000" />
       <workItem from="1496193003769" duration="24269000" />
-      <workItem from="1496276321049" duration="1386000" />
+      <workItem from="1496276321049" duration="1879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164244000" />
+    <option name="totallyTimeSpent" value="164737000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

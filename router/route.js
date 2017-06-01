@@ -148,6 +148,8 @@ module.exports=function(app,io){
             }
             else
             {
+                var s=users.user[to1];
+
                 console.log("offline");
                 socket.emit("receive",{from:to1,to:from,message:"offline"});
                io.to(s).emit("chat_notify",{from:from,message:msg});
@@ -179,6 +181,7 @@ module.exports=function(app,io){
 
         users.status[id]=status;
 
+        console.log(users);
 
 
 

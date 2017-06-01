@@ -575,7 +575,7 @@ db.find({"members.no":id},{_id:0,members:1}).forEach(function(x){
 
 
 app.post("/get_tank",function(req,res) {
-   var id = req.body.project;
+   var id = req.body.name;
     //var db = _db.collection("house");
    // db.find({"members.no": id}).forEach(function (x) {
 

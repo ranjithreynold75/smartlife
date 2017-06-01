@@ -32,9 +32,6 @@ var users={
     },
     status:{
 
-    },
-    id:{
-
     }
 
 };
@@ -100,7 +97,7 @@ module.exports=function(app,io){
             var phoneno=d.no;
 
             users.status[d.no]="online";
-            users.id[d.id]=d.no;
+
             var db=_db.collection('smart_users');
             db.updateOne({_id:d.no},{$set:{status:"online"}});
 
@@ -164,8 +161,6 @@ module.exports=function(app,io){
         
         socket.on('disconnect', function () {
             console.log('A user disconnected ' + socket.id);
-
-            users.status[users.id[socket.id]]="offline";
             console.log(users);
 
 

@@ -310,6 +310,7 @@ else
         console.log("image uploaded");
         var id=req.body.id;
         //path1.join(__dirname,'../public','login.html')
+
         var filepath=path1.join(__dirname,id+".jpg");
         console.log(filepath);
 fs.readFile(req.file.path,function(err,data){
@@ -338,14 +339,14 @@ fs.readFile(req.file.path,function(err,data){
     });
 
 
-   /* app.get("/getimage",function(req,res){
+    app.get("/getimage",function(req,res){
 
-        var id1=req.query.p;
+        var id1=req.query.id;
         console.log(id1);
-       fs.readFile(__dirname+"/id1.jpg",function(err,data){
+       fs.readFile(__dirname+"/"+id1+".jpg",function(err,data){
            if(err) {
                console.log(err);
-           res.send("unsuccess");
+          // res.send("unsuccess");
            }
            else
            {
@@ -357,6 +358,7 @@ fs.readFile(req.file.path,function(err,data){
 
 
     });
+ /*
     var urlencoder=bodyparser.urlencoded({extended:false});
 
     app.post("/get_image",urlencoder,function(req,res){

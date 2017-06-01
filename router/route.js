@@ -370,11 +370,11 @@ else if(s=="2")
 
  /*
     var urlencoder=bodyparser.urlencoded({extended:false});
-
-    app.post("/get_image",urlencoder,function(req,res){
-        var i=req.body.p;
-        console.log(i);
-        fs.readFile(__dirname+"/"+i+".jpg",function(err,data){
+*/
+    app.post("/get_image",function(req,res){
+        var id=req.body.id;
+        console.log(id+" get_image");
+        fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
             if(err) {
                 console.log(err);
                 res.send("unsuccess");
@@ -387,7 +387,7 @@ else if(s=="2")
 
     });
 
-*/
+
 
 
         app.post("/login",function(req,res){

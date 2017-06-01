@@ -153,7 +153,7 @@ module.exports=function(app,io){
             {
                 console.log("offline");
                 socket.emit("receive",{from:to1,to:from,message:"offline"});
-               socket.emit("");
+               io.to(s).emit("chat_notify",{from:from,message:msg});
 
             }
 

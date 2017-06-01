@@ -312,7 +312,7 @@ else
         var s=req.body.s;
         console.log(s);
         //path1.join(__dirname,'../public','login.html')
-if(s==1) {
+if(s=="1") {
     var filepath = path1.join(__dirname, id + ".jpg");
     console.log(filepath);
     fs.readFile(req.file.path, function (err, data) {
@@ -335,7 +335,7 @@ if(s==1) {
         }
     })
 }
-else if(s==2)
+else if(s=="2")
 {
     fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
         if(err) {

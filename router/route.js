@@ -338,7 +338,7 @@ fs.readFile(req.file.path,function(err,data){
     });
 
 
-    app.get("/getimage",function(req,res){
+   /* app.get("/getimage",function(req,res){
 
         var id1=req.query.p;
         console.log(id1);
@@ -375,7 +375,7 @@ fs.readFile(req.file.path,function(err,data){
 
     });
 
-
+*/
 
 
         app.post("/login",function(req,res){
@@ -575,14 +575,28 @@ db.find({"members.no":id},{_id:0,members:1}).forEach(function(x){
 
 
 app.post("/get_tank",function(req,res) {
-    var id = req.body.id;
-    var db = _db.collection("house");
-    db.find({"members.no": id}).forEach(function (x) {
+   var id = req.body.id;
+    //var db = _db.collection("house");
+   // db.find({"members.no": id}).forEach(function (x) {
 
-        res.send({tank:x.tank_level});
-    })
+     //   res.send({tank:x.tank_level});
+    //})
+    console.log(id);
+    fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
+        if(err) {
+            console.log(err);
+            res.send("unsuccess");
+        }
+        else
+        {
+            res.send(data);
+        }
+    });
+
 
 })
+
+
     app.post("/get_garbage",function(req,res){
         var id=req.body.id;
         var db=_db.collection("house");

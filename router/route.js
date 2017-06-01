@@ -310,6 +310,7 @@ else
         console.log("image uploaded");
         var id=req.body.id;
         var s=req.body.s;
+        console.log(s);
         //path1.join(__dirname,'../public','login.html')
 if(s==1) {
     var filepath = path1.join(__dirname, id + ".jpg");

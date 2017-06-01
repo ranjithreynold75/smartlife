@@ -87,7 +87,12 @@ module.exports=function(app,io){
 
 
 
+   socket.on('rasp',function(data){
 
+       io.sockets.in("room-"+8754623583).emit('notify',{"message":"fire detected:)"});
+
+
+   })
 
 
         socket.on('register', function (data) {

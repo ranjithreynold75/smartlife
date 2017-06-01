@@ -59,7 +59,7 @@ var loc={
 var rule = new schedule.RecurrenceRule();
 rule.minute = 5;
 
-module.exports=function(app,io,bodyparser){
+module.exports=function(app,io){
 
   /*  var j=schedule.scheduleJob(rule, function(){
        // io.sockets.emit("notify",{"message":"welcome to smartlife"});

@@ -12,12 +12,12 @@ console.log("request to "+req.url);
 next();
 }
 
-app.use(bodyparser.urlencoded({extended:false}));
-app.use(notify);
 
+app.use(notify);
+app.use(bodyparser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname+'../profile')));
 app.use(bodyparser.json({limit:'50mb'}));
-app.use(bodyparser.urlencoded({limit:'50mb',extended:true}));
+//app.use(bodyparser.urlencoded({limit:'50mb',extended:true}));
 
 require('../router/route')(app,io,bodyparser);
 

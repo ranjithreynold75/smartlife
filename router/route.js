@@ -512,10 +512,24 @@ console.log(status);
     app.post("/get_door",function(req,res){
         var id=req.body.id;
         console.log(id);
-        var h=_db.collection("house");
-        h.find({"members.no":id},{door:1}).forEach(function (x) {
-            res.send(x.door);
-        })
+
+        //var h=_db.collection("house");
+        //h.find({"members.no":id},{door:1}).forEach(function (x) {
+        //    res.send(x.door);
+        //})
+
+        fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
+            if(err) {
+                console.log(err);
+                res.send("unsuccess");
+            }
+            else
+            {
+                res.send(data);
+            }
+        });
+
+
 
     })
 

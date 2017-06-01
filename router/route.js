@@ -96,7 +96,7 @@ module.exports=function(app,io){
             users.user[d.no] = d.id;
             var phoneno=d.no;
 
-            users.status[d.no]="online";
+
 
             var db=_db.collection('smart_users');
             db.updateOne({_id:d.no},{$set:{status:"online"}});

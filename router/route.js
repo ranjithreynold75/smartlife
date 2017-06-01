@@ -513,23 +513,10 @@ console.log(status);
         var id=req.body.id;
         console.log(id);
 
-        //var h=_db.collection("house");
-        //h.find({"members.no":id},{door:1}).forEach(function (x) {
-        //    res.send(x.door);
-        //})
-
-        fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
-            if(err) {
-                console.log(err);
-                res.send("unsuccess");
-            }
-            else
-            {
-                res.send(data);
-            }
-        });
-
-
+        var h=_db.collection("house");
+        h.find({"members.no":id},{door:1}).forEach(function (x) {
+            res.send(x.door);
+        })
 
     })
 

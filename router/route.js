@@ -309,55 +309,50 @@ else
     app.post("/uploadimage",upload.single("avatar"),function(req,res){
         console.log("image uploaded");
         var id=req.body.id;
+        var s=req.body.s;
         //path1.join(__dirname,'../public','login.html')
+if(s==1) {
+    var filepath = path1.join(__dirname, id + ".jpg");
+    console.log(filepath);
+    fs.readFile(req.file.path, function (err, data) {
+        if (err) {
+            console.log(err);
+            console.log("unsuccess read")
+        }
+        else {
+            fs.writeFile(filepath, data, function (err) {
+                if (err) {
+                    console.log(err);
 
-        var filepath=path1.join(__dirname,id+".jpg");
-        console.log(filepath);
-fs.readFile(req.file.path,function(err,data){
-    if(err) {
-        console.log(err);
-    console.log("unsuccess read")
-    }
-    else
-    {
-        fs.writeFile(filepath,data,function(err){
-            if(err) {
-                console.log(err);
+                    res.send("unsuccess write");
+                }
+                else {
+                    console.log("image Stored successfully");
+                    res.send("success");
+                }
+            });
+        }
+    })
+}
+else if(s==2)
+{
+    fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
+        if(err) {
+            console.log(err);
+            // res.send("unsuccess");
+        }
+        else
+        {
+            res.send(data);
+        }
+    });
 
-            res.send("unsuccess write");
-            }
-            else
-            {
-                console.log("image Stored successfully");
-       res.send("success");
-            }
-        });
-    }
-})
 
+}
 
     });
 
 
-    app.post("/getimage",function(req,res){
-
-        var id1=req.body.id;
-        console.log(id1);
-       fs.readFile(__dirname+"/"+id1+".jpg",function(err,data){
-           if(err) {
-               console.log(err);
-          // res.send("unsuccess");
-           }
-           else
-           {
-               res.send(data);
-           }
-           });
-
-
-
-
-    });
  /*
     var urlencoder=bodyparser.urlencoded({extended:false});
 

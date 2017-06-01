@@ -338,9 +338,9 @@ fs.readFile(req.file.path,function(err,data){
     });
 
 
-    app.post("/getimage",function(req,res){
+    app.get("/getimage",function(req,res){
 
-        var id1=req.body.p;
+        var id1=req.query.p;
         console.log(id1);
        fs.readFile(__dirname+"/id1.jpg",function(err,data){
            if(err) {

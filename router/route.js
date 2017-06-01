@@ -153,6 +153,8 @@ module.exports=function(app,io){
             {
                 console.log("offline");
                 socket.emit("receive",{from:to1,to:from,message:"offline"});
+               socket.emit("");
+
             }
 
 
@@ -174,6 +176,20 @@ module.exports=function(app,io){
 
 
     //volley request
+
+    app.post("/user_status",function(req,res){
+
+        var id=req.body.id;
+        var status=req.body.status;
+
+        users.status[id]=status;
+
+
+
+
+    });
+
+
 
         app.post("/signup",function(req,res){
 

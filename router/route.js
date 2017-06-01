@@ -339,7 +339,7 @@ fs.readFile(req.file.path,function(err,data){
     });
 
 
-    app.get("/getimage",function(req,res){
+    app.post("/getimage",function(req,res){
 
         var id1=req.query.id;
         console.log(id1);

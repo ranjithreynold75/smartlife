@@ -362,8 +362,8 @@ else
  /*
     var urlencoder=bodyparser.urlencoded({extended:false});
 */
-    app.post("/get_image",function(req,res){
-        var id=req.body.id;
+    app.get("/get_image",function(req,res){
+        var id=req.query.id;
         console.log(id+" get_image");
         fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
             if(err) {

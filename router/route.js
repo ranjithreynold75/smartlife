@@ -80,6 +80,7 @@ module.exports=function(app,io){
            loc.detail[id]={
              longitude:longitude,
                latitude:latitude
+
            }
            console.log(loc);
          //  socket.emit("get_location",loc);
@@ -329,7 +330,7 @@ else
         console.log("image uploaded");
         var id=req.body.id;
 
-        console.log(s);
+
         //path1.join(__dirname,'../public','login.html')
 
     var filepath = path1.join(__dirname, id + ".jpg");
@@ -340,6 +341,7 @@ else
             console.log("unsuccess read")
         }
         else {
+
             fs.writeFile(filepath, data, function (err) {
                 if (err) {
                     console.log(err);
@@ -352,21 +354,7 @@ else
                 }
             });
         }
-    })
-
-    fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
-        if(err) {
-            console.log(err);
-            // res.send("unsuccess");
-        }
-        else
-        {
-            res.send(data);
-        }
     });
-
-
-
 
     });
 
@@ -386,6 +374,7 @@ else
             {
                 res.send(data);
             }
+
         });
 
     });

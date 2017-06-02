@@ -355,17 +355,31 @@ else
             });
         }
     });
+/*else if(s==2) {
+            fs.readFile(__dirname + "/" + id + ".jpg", function (err, data) {
+                if (err) {
+                    console.log(err);
+                    // res.send("unsuccess");
+                }
+                else {
+                    res.send(data);
+                }
+            });
 
+
+        }
+
+*/
     });
 
 
  /*
     var urlencoder=bodyparser.urlencoded({extended:false});
 */
-    app.get("/get_image",function(req,res){
-        var id=req.query.id;
+    app.post("/get_image",function(req,res){
+        var id=req.body.id;
         console.log(id+" get_image");
-        fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
+       /* fs.readFile(__dirname+"/"+id+".jpg",function(err,data){
             if(err) {
                 console.log(err);
                 res.send("unsuccess");
@@ -375,7 +389,16 @@ else
                 res.send(data);
             }
 
-        });
+        });*/
+
+       var image=fs.readFileSync(__dirname+"/"+id+".jpg");
+       var data=new Buffer(image).toString("base64");
+        res.send(data);
+
+
+
+
+
 
     });
 

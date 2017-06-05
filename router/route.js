@@ -89,9 +89,9 @@ module.exports=function(app,io){
 
 
    socket.on('rasp',function(data){
-var message=JSON.parse(data);
-     console.log(message);
-       io.sockets.in("room-"+8754623583).emit('notify',{"message":message.message});
+//var message=JSON.parse(data);
+     console.log(data);
+       io.sockets.in("room-"+8754623583).emit('notify',{"message":data});
 
 
    })

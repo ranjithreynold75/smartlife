@@ -592,11 +592,12 @@ console.log(status);
         var pass=req.body.pin;
         var who=h_id+"_house";
         var h=_db.collection("house");
-    var cursor=h.find({_id:h_id,password:pass});
+    console.log(h_id+" "+pass);
+        var cursor=h.find({_id:h_id,password:pass});
         cursor.count(function(err,c){
             if(c==1)
             {
-                io.to(who).emit("door_open",{message:"open door"});
+                //io.to(who).emit("door_open",{message:"open door"});
 
                 /*
           if(st=="on")

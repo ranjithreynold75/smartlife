@@ -99,7 +99,12 @@ module.exports=function(app,io){
 //var message=JSON.parse(data);
      console.log(data);
        io.sockets.in("room-"+8754623583).emit('notify',{"message":data.message});
+
    })
+
+
+
+
 
 
         socket.on('register_house',function(data){
@@ -590,7 +595,7 @@ console.log(status);
 
         var h_id=req.body.id;
         var pass=req.body.pin;
-        var who=h_id+"_house";
+        var who=h_id;
         var h=_db.collection("house");
     console.log(h_id+" "+pass);
         var cursor=h.find({_id:h_id,password:pass});

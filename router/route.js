@@ -112,6 +112,17 @@ module.exports=function(app,io){
             console.log("registering house " + d.id);
             houses.house[d.no] = d.id;
             console.log(houses);
+            var h=_db.collection('house');
+            var pin="";
+            h.find({"_id":d.no}).forEach(function(dat){
+
+  pin=dat.password;
+                console.log("pin:"+dat.password);
+
+
+                // io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
+            })
+            io.to(s).emit("need_pin",{pin:pin});
 
         })
 

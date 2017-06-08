@@ -116,13 +116,16 @@ module.exports=function(app,io){
             var pin="";
             h.find({"_id":d.no}).forEach(function(dat){
 
-  pin=dat.password;
+  //pin=dat.password;
                 console.log("pin:"+dat.password);
+                 if(dat.password!="")
+                 {
+                     io.to(houses.house[d.no]).emit("need_pin",{pin:pin});
 
+                 }
 
                 // io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
             })
-            io.to(houses.house[d.no]).emit("need_pin",{pin:pin});
 
         })
 

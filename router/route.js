@@ -26,6 +26,13 @@ mc.connect(url,function(err,db){
 });
 
 
+var houses={
+    house:{
+
+    }
+}
+
+
 var users={
     user:{
 
@@ -92,9 +99,19 @@ module.exports=function(app,io){
 //var message=JSON.parse(data);
      console.log(data);
        io.sockets.in("room-"+8754623583).emit('notify',{"message":data.message});
-
-
    })
+
+
+        socket.on('register_house',function(data){
+            var d = JSON.parse(data);
+            console.log("registering house " + d.id);
+            houses.house[d.no] = d.id;
+            console.log(houses);
+
+        })
+
+
+
 
 
         socket.on('register', function (data) {
@@ -166,13 +183,14 @@ module.exports=function(app,io){
 
 
         });
+
         
-        
+
+
+
         socket.on('disconnect', function () {
             console.log('A user disconnected ' + socket.id);
             console.log(users);
-
-
         })
 
 

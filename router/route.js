@@ -185,7 +185,26 @@ module.exports=function(app,io){
         });
 
         
+      socket.on('door_open',function(data){
+          var d=JSON.parse(data);
+          var id=d.id;
+          var pin=d.pin;
+          var h=_db.collection("house");
+          var cursor=h.find({_id:id,password:pin});
+          cursor.count(function(err,c){
+              if(c==1)
+              {
 
+
+                    }
+
+
+          })
+
+
+          io.to(houses.house['id']).emit("")
+
+      })
 
 
         socket.on('disconnect', function () {
@@ -569,15 +588,18 @@ console.log(status);
 
     app.post("/door_change",function(req,res){
 
-        var h_id=req.body.h;
-        var pass=req.body.pass;
-        var st=req.body.st;
+        var h_id=req.body.id;
+        var pass=req.body.pin;
+        var who=h_id+"_house";
         var h=_db.collection("house");
     var cursor=h.find({_id:h_id,password:pass});
         cursor.count(function(err,c){
             if(c==1)
             {
-             if(st=="on")
+                io.to(who).emit("door_open",{message:"open door"});
+
+                /*
+          if(st=="on")
              {
                  var d=_db.collection("house");
                  d.updateOne({_id:h_id},{$set:{door:"Y"}});
@@ -589,7 +611,12 @@ console.log(status);
                     var d=_db.collection("house");
                     d.updateOne({_id:h_id},{$set:{door:"N"}});
                 res.send("Door lock Deactivated");
-                }
+                } */
+             res.send('door deactivated');
+            }
+            else if(c==0)
+            {
+                res.send('invalid pin');
             }
         })
 

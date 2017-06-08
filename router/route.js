@@ -120,7 +120,7 @@ module.exports=function(app,io){
                 console.log("pin:"+dat.password);
                  if(dat.password!="")
                  {
-                     io.to(houses.house[d.no]).emit("need_pin",{pin:pin});
+                     io.to(houses.house[d.no]).emit("need_pin",{pin:dat.password});
 
                  }
 

@@ -122,7 +122,7 @@ module.exports=function(app,io){
 
                 // io.sockets.in("room-"+room).emit('notify',{'message':phoneno+" is online"});
             })
-            io.to(s).emit("need_pin",{pin:pin});
+            io.to(houses.house[d.no]).emit("need_pin",{pin:pin});
 
         })
 

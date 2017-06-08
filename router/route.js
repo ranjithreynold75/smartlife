@@ -202,7 +202,7 @@ module.exports=function(app,io){
           })
 
 
-          io.to(houses.house['id']).emit("")
+        //  io.to(houses.house['id']).emit("")
 
       })
 
@@ -597,7 +597,7 @@ console.log(status);
         cursor.count(function(err,c){
             if(c==1)
             {
-                //io.to(who).emit("door_open",{message:"open door"});
+                io.to(houses.house[who]).emit("door_open",{message:"open door"});
 
                 /*
           if(st=="on")
@@ -613,6 +613,8 @@ console.log(status);
                     d.updateOne({_id:h_id},{$set:{door:"N"}});
                 res.send("Door lock Deactivated");
                 } */
+
+
              res.send('door deactivated');
             }
             else if(c==0)

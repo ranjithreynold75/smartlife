@@ -103,7 +103,7 @@ module.exports=function(app,io){
 
 
         socket.on('register_house',function(data){
-            var d = JSON.parse(data);
+            var d =data;
             console.log("registering house " + d.id);
             houses.house[d.no] = d.id;
             console.log(houses);

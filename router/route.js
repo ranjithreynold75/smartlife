@@ -254,9 +254,9 @@ module.exports=function(app,io){
 
     app.post("/house_location",function(req,res){
 
-        var id=req.id;
-        var lon=req.long;
-        var lat=req.lat;
+        var id=req.body.id;
+        var lon=req.body.long;
+        var lat=req.body.lat;
 
         console.log(lon+" "+lat+" "+id);
 

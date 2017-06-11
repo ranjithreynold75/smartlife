@@ -84,13 +84,18 @@ module.exports=function(app,io){
             var id=d.id;
             var longitude=d.longitude;
             var latitude=d.latitude;
-           loc.detail[id]={
+           /*loc.detail[id]={
              longitude:longitude,
                latitude:latitude
 
-           }
-           console.log(loc);
+           }*/
+           //console.log(loc);
+            var h=_db.collection("smart_user");
+            h.updateOne({_id:id},{$set:{"location.longitude":longitude,"location.latitude":latitude}});
+
          //  socket.emit("get_location",loc);
+
+
         })
 
 
@@ -261,7 +266,7 @@ module.exports=function(app,io){
         console.log(lon+" "+lat+" "+id);
 
         var h=_db.collection("house");
-        h.updateOne({_id:id},{$set:{longitude:lon,latitude:lat}});
+        h.updateOne({_id:id},{$set:{"location.longitude":lon,"location.latitude":lat}});
         res.send("success");
 
     });

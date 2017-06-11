@@ -630,6 +630,15 @@ console.log(status);
     })
 
 
+    app.post("/message_home",function(req,res){
+
+        var id=req.body.id;
+var msg=req.body.message;
+        io.to(houses.house[id]).emit("house_message",{message:msg});
+
+    })
+
+
     app.post("/door_change",function(req,res){
 
         var h_id=req.body.id;

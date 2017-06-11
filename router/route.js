@@ -258,6 +258,8 @@ module.exports=function(app,io){
         var lon=req.long;
         var lat=req.lat;
 
+        console.log(lon+" "+lat+" "+id);
+
         var h=_db.collection("house");
         h.updateOne({_id:id},{$set:{longitude:lon,latitude:lat}});
         res.send("success");

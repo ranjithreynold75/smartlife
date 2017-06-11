@@ -635,7 +635,7 @@ console.log(status);
         var id=req.body.id;
 var msg=req.body.message;
         io.to(houses.house[id]).emit("house_message",{message:msg});
-
+res.send('success');
     })
 
 

@@ -252,6 +252,23 @@ module.exports=function(app,io){
 
 
 
+    app.post("/house_location",function(req,res){
+
+        var id=req.id;
+        var lon=req.long;
+        var lat=req.lat;
+
+        var h=_db.collection("house");
+        h.updateOne({_id:id},{$set:{longitude:lon,latitude:lat}});
+
+    });
+
+
+
+
+
+
+
         app.post("/signup",function(req,res){
 
             //var house_id=id(8);

@@ -260,6 +260,7 @@ module.exports=function(app,io){
 
         var h=_db.collection("house");
         h.updateOne({_id:id},{$set:{longitude:lon,latitude:lat}});
+        res.send("success");
 
     });
 

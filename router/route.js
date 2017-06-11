@@ -90,7 +90,7 @@ module.exports=function(app,io){
 
            }*/
            //console.log(loc);
-            var h=_db.collection("smart_user");
+            var h=_db.collection("smart_users");
             h.updateOne({_id:id},{$set:{"location.longitude":longitude,"location.latitude":latitude}});
 
          //  socket.emit("get_location",loc);

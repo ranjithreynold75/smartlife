@@ -89,7 +89,7 @@ module.exports=function(app,io){
                latitude:latitude
 
            }*/
-           //console.log(loc);
+           console.log(id+" "+longitude);
             var h=_db.collection("smart_users");
             h.updateOne({_id:id},{$set:{"location.longitude":longitude,"location.latitude":latitude}});
 

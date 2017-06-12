@@ -272,7 +272,18 @@ module.exports=function(app,io){
     });
 
 
+app.post("/all_location",function(req,res){
+var id=req.body.id;
+    var h=_db.collection("house");
+    h.find({_id:id},{_id:0,location:1}).forEach(function(x){
 
+        console.log(JSON.stringify(x));
+        res.send(JSON.stringify(x));
+    })
+
+
+
+});
 
 
 

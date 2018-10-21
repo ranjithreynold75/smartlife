@@ -3,7 +3,7 @@ var id=require('idgen');
 var date=new Date(2017,2,16,13,15,0);
 var m=require('mongodb');
 
-var url="mongodb://jatters:@ds058579.mlab.com:58579/jatapp";
+var url="";
 var mc=m.MongoClient;
 var _db;
 
